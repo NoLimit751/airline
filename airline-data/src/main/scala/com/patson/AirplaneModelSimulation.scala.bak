@@ -41,14 +41,13 @@ object AirplaneModelSimulation {
     val threshold = getModelLowDemandDiscountThreshold(model)
     val thresholdDelta = threshold - airplaneCount
     val discounts = ListBuffer[ModelDiscount]()
-	// I do not want low demand discount ever to activate
-    /*if (thresholdDelta > 0) { //then some discounts
+    if (thresholdDelta > 0) { //then some discounts
       val priceDiscountPercentage = thresholdDelta * MAX_PRICE_DISCOUNT_PERCENTAGE / threshold
       if (priceDiscountPercentage > 0) {
         discounts.append(ModelDiscount(model.id, priceDiscountPercentage * 0.01, DiscountType.PRICE, DiscountReason.LOW_DEMAND, None))
       }
       discounts.append(ModelDiscount(model.id, CONSTRUCTION_TIME_DISCOUNT, DiscountType.CONSTRUCTION_TIME, DiscountReason.LOW_DEMAND, None))
-    }*/
+    }
     discounts.toList
   }
 

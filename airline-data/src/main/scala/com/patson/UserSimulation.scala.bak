@@ -6,8 +6,8 @@ import com.patson.data._
 import com.patson.model._
 
 object UserSimulation {
-  val LARGE_AIRLINE_PURGE_USER_THRESHOLD = 9999 //in days, changed from 150 to 9999 so it does not purge
-  val SMALL_AIRLINE_PURGE_USER_THRESHOLD = 9999 //in days, changed from 30 to 9999 so it does not purge
+  val LARGE_AIRLINE_PURGE_USER_THRESHOLD = 150 //in days
+  val SMALL_AIRLINE_PURGE_USER_THRESHOLD = 30 //in days
 
 
   def simulate(cycle: Int) = {

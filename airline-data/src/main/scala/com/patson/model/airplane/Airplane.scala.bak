@@ -71,6 +71,6 @@ object Airplane {
   val MAX_CONDITION = 100
   val BAD_CONDITION = 40
   val CRITICAL_CONDITION = 20
-  val DEFAULT_DEALER_RATIO = 0.9 // Changed from 1.2 because if sell rate is 0.8, I want the dealer to sell it for 10% more at 0.9, that makes more sense to me
-  val MAX_FLIGHT_MINUTES : Int = (18 * 60 * 7).toInt // Changed from 24*60*4 which is 4 full days to 7 days with 18h active on average. It's 22h on average after all the A, C and D checks, and I cut it down by 4 more to 18h to be more realistic
+  val DEFAULT_DEALER_RATIO = 1.2
+  val MAX_FLIGHT_MINUTES : Int = (24 * 60 * 4).toInt
 }

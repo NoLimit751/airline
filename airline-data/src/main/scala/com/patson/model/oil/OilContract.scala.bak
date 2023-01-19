@@ -10,8 +10,8 @@ case class OilContract(airline : Airline, contractPrice : Double, volume : Int, 
 }
 
 object OilContract {
-  val MAX_CONTRACTS_ALLOWED = 50 // Changed from 5, I don't see why you would have a limit on oil contracts
-  val MAX_VOLUME_FACTOR = 100 // Changed from 1.2. If you want to buy more than you need and waste it, it's your choice
+  val MAX_CONTRACTS_ALLOWED = 5
+  val MAX_VOLUME_FACTOR = 1.2
   val MAX_DURATION = 200
   val MIN_DURATION = 10
   
