@@ -3756,7 +3756,7 @@
 		  </div>
 	  </div>
     
-    <!-- The Annoucement Modal
+    /*<!-- The Annoucement Modal -->
 	<div id="announcementModal" class="modal">
 	  <div class="modal-content" style="width: 500px;">
 	    <span class="close" onclick="closeModal($('#announcementModal'))">&times;</span>
@@ -3767,7 +3767,7 @@
 	    </div>
 	  </div>
 	</div>
-	The Annoucement Modal -->
+	<!-- The Annoucement Modal -->*/
 
 	<!-- Confirmation Modal -->
 	<div id="confirmationModal" class="modal">
