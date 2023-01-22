@@ -9,11 +9,11 @@ import com.patson.data.AirplaneSource
 object Bank {
   //val LOAN_TERMS = Map(52 -> 0.25 , 2 * 52 -> 0.28, 3 *52 -> 0.32, 5 * 52 -> 0.35)
   val WEEKS_PER_YEAR = 52
-  val LOAN_TERMS = List[Int](WEEKS_PER_YEAR, 2 * WEEKS_PER_YEAR, 3 * WEEKS_PER_YEAR, 4 * WEEKS_PER_YEAR, 5 * WEEKS_PER_YEAR)
+  val LOAN_TERMS = List[Int](WEEKS_PER_YEAR, 2 * WEEKS_PER_YEAR, 3 * WEEKS_PER_YEAR, 5 * WEEKS_PER_YEAR, 10 * WEEKS_PER_YEAR, 15 * WEEKS_PER_YEAR, 20 * WEEKS_PER_YEAR)
   val MAX_LOANS = 10
   val MIN_LOAN_AMOUNT = 10000
   val MAX_LOAN_AMOUNT = 2000000000 //2 billion as max, changed from 500 million
-  val LOAN_REAPPLY_MIN_INTERVAL = 13 //it was 13 (only every quarter), changed it do 1 (if you can afford it, take a loan whenever you want)
+  val LOAN_REAPPLY_MIN_INTERVAL = 1 //it was 13 (only every quarter), changed it do 1 (if you can afford it, take a loan whenever you want)
   def getMaxLoan(airlineId : Int) : LoanReply = {
     val existingLoans = BankSource.loadLoansByAirline(airlineId)
     
@@ -33,12 +33,12 @@ object Bank {
     //base on previous month
     val previousMonthCycle = currentCycle - currentCycle % 4 - 1
     
-    val creditFromProfit : Option[Long] = IncomeSource.loadIncomeByAirline(airlineId, previousMonthCycle, Period.MONTHLY).map(_.links.profit * 13 * 2)  //2 * yearly link profit
+    val creditFromProfit : Option[Long] = IncomeSource.loadIncomeByAirline(airlineId, previousMonthCycle, Period.MONTHLY).map(_.links.profit * 13 * 5)  //5 * yearly link profit (changed from 2)
     
     val totalAssets = getAssets(airlineId)
     
-    //offer 20% of the assets as credit
-    val creditFromAssets = (totalAssets * 0.2).toLong
+    //offer 80% of the assets as credit, changed to 80% from 20%
+    val creditFromAssets = (totalAssets * 0.8).toLong
     
     val totalCredit = creditFromAssets + creditFromProfit.getOrElse(0L)
     
@@ -68,7 +68,7 @@ object Bank {
   }
 
   def getLoanOptions(principal : Long, annualRate : BigDecimal, currentCycle : Int) = {
-      val rateIncrementPerYear = 0.005 //0.5% more every extra year
+      val rateIncrementPerYear = 0.003 //0.3% more every extra year (changed from 0.5%)
       LOAN_TERMS.map { term =>
         //Payment = P x (r / n) x (1 + r / n)^n(t)] / ((1 + r / n)^n(t) - 1)
         val years = term / WEEKS_PER_YEAR

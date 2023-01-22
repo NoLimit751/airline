@@ -731,7 +731,7 @@ function setAirlineColor(color) {
 }
 
 function showUploadLogo() {
-	if (activeAirline.reputation >= 40) {
+	if (activeAirline.reputation >= 1) { // Removed the limit, it was 40
 		updateLogoUpload()
 		$('#uploadLogoModal .uploadForbidden').hide()
 		$('#uploadLogoModal .uploadPanel').show()
