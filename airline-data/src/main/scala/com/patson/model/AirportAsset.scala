@@ -506,7 +506,7 @@ abstract class AirportAsset() extends IdObject{
         case AirportAssetStatus.UNDER_CONSTRUCTION => level - 1
         case AirportAssetStatus.COMPLETED => level
     })
-    val sellValue = (value * 0.5).toLong
+    val sellValue = (value * 0.75).toLong // Changed from 0.5 in the original. I don't think an asset should lose half of it's value when selling
     def isOperational() = { level > 1 || status == AirportAssetStatus.COMPLETED }
 
 
