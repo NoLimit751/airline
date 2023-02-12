@@ -217,9 +217,9 @@ class AirportAssetApplication @Inject()(cc: ControllerComponents) extends Abstra
               if (base.scale < asset.blueprint.assetType.baseRequirement) {
                 Some(s"Requires Airport Base level ${asset.blueprint.assetType.baseRequirement} to build the ${asset.blueprint.assetType.label}")
               } else {
-                //only 1 asset per base
+                //it was only 1 asset per base, but I removed the limit
                 AirportAssetSource.loadAirportAssetsByAirline(airline.id).find(_.blueprint.airport.id == asset.blueprint.airport.id) match {
-                  case Some(otherAsset) => Some(s"Cannot build more than 1 asset per airport. Already own ${otherAsset.name}")
+                  case Some(otherAsset) => None // I have put "None" instead of Some(s"Cannot build more than 1 asset per airport. Already own ${otherAsset.name}")
                   case None => None //OK
                 }
               }
