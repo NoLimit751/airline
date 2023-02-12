@@ -22,7 +22,7 @@ object AirportAssetType extends Enumeration {
         val maxRoi : Double //annual
         val initRoi : Double
         def minRoi = initRoi / 2
-        def upgradeCooldown = constructionDuration  //same for now
+        def upgradeCooldown = 0 // Disabled it, used to be "= constructionDuration". Structures can be upgraded continously, like in real life
         val publicPropertyKeys = List[String]()
         val privatePropertyKeys = List[String]()
     }
