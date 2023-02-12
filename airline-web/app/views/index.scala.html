@@ -375,112 +375,112 @@
 	<!-- 	  		<ul class="tabs" id="main-tabs" style="display: none;"> -->
 				<ul class="tabs" id="main-tabs" style="padding: 10px 0 60px 0;">
 
-				  <li class="left-tab worldMapCanvasTab">
-                      <div style="display:flex; align-items: center;">
-                          <div class="tab-icon" data-link="/" onclick="showWorldMap();">
-                            <img src='@routes.Assets.versioned("images/icons/globe-green.png")' style="margin: auto;">
-                          </div>
-                          <span class="label floatLabel">World Map</span>
-                      </div>
-                  </li>
-				  <li class="button left-tab user-specific-tab linksCanvasTab">
-                      <div style="display:flex; align-items: center;">
-                          <div class="tab-icon" data-link="link" onclick="showLinksDetails();">
-                              <img src='@routes.Assets.versioned("images/icons/arrow-step-over.png")' style="margin: auto;">
-                          </div>
-                          <span class="label floatLabel">Flights</span>
-                      </div>
-                  </li>
-<!--	&lt;!&ndash; 			  <li class="button left-tab" id="airportCanvasTab" onclick="showAirportDetails();"><span>Airport</span></li> &ndash;&gt;-->
+					<li class="left-tab worldMapCanvasTab">
+						<div style="display:flex; align-items: center;">
+							<div class="tab-icon" data-link="/" onclick="showWorldMap();">
+								<img src='@routes.Assets.versioned("images/icons/globe-green.png")' style="margin: auto;">
+							</div>
+							<span class="label floatLabel">World Map</span>
+						</div>
+					</li>
+					<li class="button left-tab user-specific-tab linksCanvasTab">
+						<div style="display:flex; align-items: center;">
+							<div class="tab-icon" data-link="link" onclick="showLinksDetails();">
+								<img src='@routes.Assets.versioned("images/icons/arrow-step-over.png")' style="margin: auto;">
+							</div>
+							<span class="label floatLabel">Flights</span>
+						</div>
+					</li>
+					<!--	&lt;!&ndash; 			  <li class="button left-tab" id="airportCanvasTab" onclick="showAirportDetails();"><span>Airport</span></li> &ndash;&gt;-->
 
-                    <li class="button left-tab user-specific-tab countryCanvasTab">
-                        <div style="display:flex; align-items: center;">
-                            <div class="tab-icon" data-link="country" onclick="showCountryView();">
-                                <img src='@routes.Assets.versioned("images/icons/locale.png")'>
-                            </div>
-                            <span class="label floatLabel">Country</span>
-                        </div>
-                    </li>
-                    <li class="button left-tab user-specific-tab airplaneCanvasTab">
-                        <div style="display:flex; align-items: center;">
-                            <div class="tab-icon" data-link="airplane" onclick="showAirplaneCanvas();">
-                                <img src='@routes.Assets.versioned("images/icons/airplane-gear.png")' style="margin: auto;">
-                            </div>
-                            <span class="label floatLabel">Airplane</span>
-                        </div>
-                    </li>
-                    <li class="button left-tab user-specific-tab officeCanvasTab">
-                        <div style="display:flex; align-items: center;">
-                            <div class="tab-icon" data-link="office" onclick="showOfficeCanvas();">
-                                <img src='@routes.Assets.versioned("images/icons/building-hedge.png")' style="margin: auto;">
-                            </div>
-                            <span class="label floatLabel">Office</span>
-                        </div>
-                    </li>
-                    <li class="button left-tab user-specific-tab bankCanvasTab">
-                        <div style="display:flex; align-items: center;">
-                            <div class="tab-icon" data-link="bank" onclick="showBankCanvas();">
-                                <img src='@routes.Assets.versioned("images/icons/bank.png")' style="margin: auto;">
-                            </div>
-                            <span class="label floatLabel">Bank</span>
-                        </div>
-                    </li>
-                    <li class="button left-tab user-specific-tab oilCanvasTab">
-                        <div style="display:flex; align-items: center;">
-                            <div class="tab-icon" data-link="oil" onclick="showOilCanvas();">
-                                <img src='@routes.Assets.versioned("images/icons/oil-barrel.png")' style="margin: auto;">
-                            </div>
-                            <span class="label floatLabel">Oil</span>
-                        </div>
-                    </li>
-                    <li class="button left-tab user-specific-tab rivalsCanvasTab">
-                        <div style="display:flex; align-items: center;">
-                            <div class="tab-icon" data-link="rival" onclick="showRivalsCanvas();">
-                                <img src='@routes.Assets.versioned("images/icons/user-silhouette-question.png")' style="margin: auto;">
-                            </div>
-                            <span class="label floatLabel">Rivals</span>
-                        </div>
-                    </li>
-                    <li class="button left-tab rankingCanvasTab">
-                        <div style="display:flex; align-items: center;">
-                            <div class="tab-icon" data-link="ranking" onclick="showRankingCanvas();">
-                                <img src='@routes.Assets.versioned("images/icons/trophy.png")' style="margin: auto;">
-                            </div>
-                            <span class="label floatLabel">Ranking</span>
-                        </div>
-                    </li>
-                    <li class="button left-tab allianceCanvasTab">
-                        <div style="display:flex; align-items: center;">
-                            <div class="tab-icon" data-link="alliance" onclick="showAllianceCanvas();">
-                                <img src='@routes.Assets.versioned("images/icons/puzzle.png")' style="margin: auto;">
-                            </div>
-                            <span class="label floatLabel">Alliance</span>
-                        </div>
-                    </li>
-                    <li class="button left-tab user-specific-tab logCanvasTab">
-                        <div style="display:flex; align-items: center;">
-                            <div class="tab-icon" data-link="log" onclick="showLogCanvas();">
-                                <img src='@routes.Assets.versioned("images/icons/book-open-text.png")' style="margin: auto;">
-                            </div>
-                            <span class="label floatLabel">Log</span>
-                        </div>
-                    </li>
-                    <li class="button left-tab user-specific-tab eventCanvasTab">
-                        <div style="display:flex; align-items: center;">
-                            <div class="tab-icon" data-link="event" onclick="showEventCanvas();">
-                                <img src='@routes.Assets.versioned("images/icons/olympics-medal.png")' style="margin: auto;">
-                            </div>
-                            <span class="label floatLabel">Event</span>
-                        </div>
-                    </li>
-                    <li class="button left-tab searchCanvasTab">
-                        <div style="display:flex; align-items: center;">
-                            <div class="tab-icon" data-link="search" onclick="showSearchCanvas();">
-                                <img src='@routes.Assets.versioned("images/icons/magnifier.png")' style="margin: auto;">
-                            </div>
-                            <span class="label floatLabel">Search</span>
-                        </div>
-                    </li>
+					<li class="button left-tab user-specific-tab airplaneCanvasTab">
+						<div style="display:flex; align-items: center;">
+							<div class="tab-icon" data-link="airplane" onclick="showAirplaneCanvas();">
+								<img src='@routes.Assets.versioned("images/icons/airplane-gear.png")' style="margin: auto;">
+							</div>
+							<span class="label floatLabel">Airplanes</span>
+						</div>
+					</li>
+					<li class="button left-tab user-specific-tab officeCanvasTab">
+						<div style="display:flex; align-items: center;">
+							<div class="tab-icon" data-link="office" onclick="showOfficeCanvas();">
+								<img src='@routes.Assets.versioned("images/icons/building-hedge.png")' style="margin: auto;">
+							</div>
+							<span class="label floatLabel">Office</span>
+						</div>
+					</li>
+					<li class="button left-tab user-specific-tab bankCanvasTab">
+						<div style="display:flex; align-items: center;">
+							<div class="tab-icon" data-link="bank" onclick="showBankCanvas();">
+								<img src='@routes.Assets.versioned("images/icons/bank.png")' style="margin: auto;">
+							</div>
+							<span class="label floatLabel">Bank</span>
+						</div>
+					</li>
+					<li class="button left-tab user-specific-tab oilCanvasTab">
+						<div style="display:flex; align-items: center;">
+							<div class="tab-icon" data-link="oil" onclick="showOilCanvas();">
+								<img src='@routes.Assets.versioned("images/icons/oil-barrel.png")' style="margin: auto;">
+							</div>
+							<span class="label floatLabel">Oil</span>
+						</div>
+					</li>
+					<li class="button left-tab allianceCanvasTab">
+						<div style="display:flex; align-items: center;">
+							<div class="tab-icon" data-link="alliance" onclick="showAllianceCanvas();">
+								<img src='@routes.Assets.versioned("images/icons/puzzle.png")' style="margin: auto;">
+							</div>
+							<span class="label floatLabel">Alliance</span>
+						</div>
+					</li>
+					<li class="button left-tab rankingCanvasTab">
+						<div style="display:flex; align-items: center;">
+							<div class="tab-icon" data-link="ranking" onclick="showRankingCanvas();">
+								<img src='@routes.Assets.versioned("images/icons/trophy.png")' style="margin: auto;">
+							</div>
+							<span class="label floatLabel">Ranking</span>
+						</div>
+					</li>
+					<li class="button left-tab user-specific-tab rivalsCanvasTab">
+						<div style="display:flex; align-items: center;">
+							<div class="tab-icon" data-link="rival" onclick="showRivalsCanvas();">
+								<img src='@routes.Assets.versioned("images/icons/user-silhouette-question.png")' style="margin: auto;">
+							</div>
+							<span class="label floatLabel">Rivals</span>
+						</div>
+					</li>
+					<li class="button left-tab user-specific-tab countryCanvasTab">
+						<div style="display:flex; align-items: center;">
+							<div class="tab-icon" data-link="country" onclick="showCountryView();">
+								<img src='@routes.Assets.versioned("images/icons/locale.png")'>
+							</div>
+							<span class="label floatLabel">Country</span>
+						</div>
+					</li>
+					<li class="button left-tab user-specific-tab eventCanvasTab">
+						<div style="display:flex; align-items: center;">
+							<div class="tab-icon" data-link="event" onclick="showEventCanvas();">
+								<img src='@routes.Assets.versioned("images/icons/olympics-medal.png")' style="margin: auto;">
+							</div>
+							<span class="label floatLabel">Event</span>
+						</div>
+					</li>
+					<li class="button left-tab user-specific-tab logCanvasTab">
+						<div style="display:flex; align-items: center;">
+							<div class="tab-icon" data-link="log" onclick="showLogCanvas();">
+								<img src='@routes.Assets.versioned("images/icons/book-open-text.png")' style="margin: auto;">
+							</div>
+							<span class="label floatLabel">Log</span>
+						</div>
+					</li>
+					<li class="button left-tab searchCanvasTab">
+						<div style="display:flex; align-items: center;">
+							<div class="tab-icon" data-link="search" onclick="showSearchCanvas();">
+								<img src='@routes.Assets.versioned("images/icons/magnifier.png")' style="margin: auto;">
+							</div>
+							<span class="label floatLabel">Search</span>
+						</div>
+					</li>
 				</ul>
 			</div>
 
@@ -495,7 +495,7 @@
 						 data-small-airport-marker='@routes.Assets.versioned("images/markers/airport-lighter.png")'
 						 data-gateway-airport-marker='@routes.Assets.versioned("images/markers/airport-gateway.png")'
 						 data-disabled-airport-marker='@routes.Assets.versioned("images/markers/airport-transparent.png")'></div>
-					<div id="sidePanel" class="sidePanel" style="float: left; display:none;" >
+					<div id="sidePanel" class="sidePanel" style="float: left; display:none;">
 						<div id="detailsPanel" class="section" style="width: 95% ; float: left;">
 							<div id="linkDetails" style="width: 100%;;">
 								<div style="width: 50%; float: left">
@@ -535,17 +535,17 @@
 												<h5>
 													Overall Quality:
 													<div class="tooltip">
-													<img src='@routes.Assets.versioned("images/icons/information.png")'>
-													<span class="tooltiptext below">
-														Overall quality is determined by:<br/>
-														- Fleet Age per Route<br/>
-														- Service Star level per route<br/>
-														- Company wide Service Quality<br/>
-														<br/>
-<!--														<img src='@routes.Assets.versioned("images/clips/service-quality.gif")' loading="lazy">-->
-                                                        <img data-src='@routes.Assets.versioned("images/clips/service-quality.gif")' class="lazyload" alt="">
-													</span>
-												</div>
+														<img src='@routes.Assets.versioned("images/icons/information.png")'>
+														<span class="tooltiptext below">
+															Overall quality is determined by:<br />
+															- Fleet Age per Route<br />
+															- Service Star level per route<br />
+															- Company wide Service Quality<br />
+															<br />
+															<!--														<img src='@routes.Assets.versioned("images/clips/service-quality.gif")' loading="lazy">-->
+															<img data-src='@routes.Assets.versioned("images/clips/service-quality.gif")' class="lazyload" alt="">
+														</span>
+													</div>
 												</h5>
 											</div>
 											<div class="value" id="linkQuality"></div>
@@ -642,16 +642,16 @@
 									<div class="divider"></div>
 									<h4>
 										<span>Direct Competitions</span>
-										<img src='@routes.Assets.versioned("images/icons/chart-up.png")' class="clickable" title="View Rival History"onclick="showLinkRivalHistory($('#actionLinkId').val())" style="vertical-align: text-bottom">
-										<img src='@routes.Assets.versioned("images/icons/magnifier.png")' class="clickable" title="View Rival Details"onclick="showLinkRivalDetails($('#actionLinkId').val())" style="vertical-align: text-bottom">
+										<img src='@routes.Assets.versioned("images/icons/chart-up.png")' class="clickable" title="View Rival History" onclick="showLinkRivalHistory($('#actionLinkId').val())" style="vertical-align: text-bottom">
+										<img src='@routes.Assets.versioned("images/icons/magnifier.png")' class="clickable" title="View Rival Details" onclick="showLinkRivalDetails($('#actionLinkId').val())" style="vertical-align: text-bottom">
 									</h4>
 									<div class="table data" id="linkCompetitons" style="width: 100%">
 										<div class='table-header'>
 											<div class="cell" style="width: 30%;"><h5>Airline</h5></div>
 											<div class="cell" style="width: 24%;"><h5>Price</h5></div>
 											<div class="cell" style="width: 20%;"><h5>Capacity</h5></div>
-                                            <div class="cell" style="width: 13%;"><h5>Quality</h5></div>
-                                            <div class="cell" style="width: 13%;"><h5>Freq.</h5></div>
+											<div class="cell" style="width: 13%;"><h5>Quality</h5></div>
+											<div class="cell" style="width: 13%;"><h5>Freq.</h5></div>
 										</div>
 									</div>
 									<div id=linkCompetitionsPie align="center"></div>
@@ -676,14 +676,14 @@
 							<div id="planLinkDetails" style="width: 100%; display: none;">
 								<h4>Plan Route Details</h4>
 								<div class="table" style="width: 100%">
-									<input type="hidden" id="planLinkFromAirportId"/>
-									<input type="hidden" id="planLinkToAirportId"/>
+									<input type="hidden" id="planLinkFromAirportId" />
+									<input type="hidden" id="planLinkToAirportId" />
 									<div class="table-row">
 										<div class="label"><h5>From:</h5></div>
 										<div class="value">
 											<span id="planLinkFromAirportName" class="clickable" data-link="airport"></span>
 											<img class="clickable" src='@routes.Assets.versioned("images/icons/star-info.png")' title="Flight Quality Expectation" onclick="showLinkExpectedQualityModal(true)">
-											<img id="planLinkFromAirportEditIcon" src='@routes.Assets.versioned("images/icons/gear.png")' class='clickable' onclick="$('#planLinkFromAirportSelect').show()"  title="Change From Airport" data-link="airport">
+											<img id="planLinkFromAirportEditIcon" src='@routes.Assets.versioned("images/icons/gear.png")' class='clickable' onclick="$('#planLinkFromAirportSelect').show()" title="Change From Airport" data-link="airport">
 
 											<div class="value"><select class="select-css" id="planLinkFromAirportSelect" onchange="planLink($(this).val(), $('#planLinkToAirportId').val())"></select></div>
 
@@ -693,7 +693,7 @@
 										<div class="label"><h5>To:</h5></div>
 										<div class="value">
 											<span id="planLinkToAirportName" class="clickable"></span>
-											<img class="clickable"  src='@routes.Assets.versioned("images/icons/star-info.png")' title="Flight Quality Expectation" onclick="showLinkExpectedQualityModal(false)">
+											<img class="clickable" src='@routes.Assets.versioned("images/icons/star-info.png")' title="Flight Quality Expectation" onclick="showLinkExpectedQualityModal(false)">
 										</div>
 									</div>
 									<div class="table-row">
@@ -751,7 +751,7 @@
 													<div class="cell" style="width: 30%;"><h5>Price</h5></div>
 													<div class="cell" style="width: 25%;"><h5>Capacity</h5></div>
 													<div class="cell" style="width: 8%;"><h5>Quality</h5></div>
-                                                    <div class="cell" style="width: 7%;"><h5>Freq.</h5></div>
+													<div class="cell" style="width: 7%;"><h5>Freq.</h5></div>
 												</div>
 											</div>
 										</div>
@@ -777,49 +777,49 @@
 									<div class="table-row">
 										<div class="label"><h5>Price (Y/J/F):</h5></div>
 										<div class="value">
-											<input type="text" id="planLinkEconomyPrice" data-class="economy" class="planLinkPrice"/>
-											<input type="text" id="planLinkBusinessPrice" data-class="business" class="planLinkPrice"/>
-											<input type="text" id="planLinkFirstPrice" data-class="first" class="planLinkPrice"/>
-											<img src='@routes.Assets.versioned("images/icons/plus-button.png")' class='button' onclick='increasePrice()'  title="Increase all price by 5% of Default">
-											<img src='@routes.Assets.versioned("images/icons/minus-button.png")' class='button' onclick='decreasePrice()'  title="Decrease all price by 5% of Default">
-											<img src='@routes.Assets.versioned("images/icons/arrow-circle-135.png")' class='button' onclick='resetPrice()'  title="Reset to Default Ticket Prices">
+											<input type="text" id="planLinkEconomyPrice" data-class="economy" class="planLinkPrice" />
+											<input type="text" id="planLinkBusinessPrice" data-class="business" class="planLinkPrice" />
+											<input type="text" id="planLinkFirstPrice" data-class="first" class="planLinkPrice" />
+											<img src='@routes.Assets.versioned("images/icons/plus-button.png")' class='button' onclick='increasePrice()' title="Increase all price by 5% of Default">
+											<img src='@routes.Assets.versioned("images/icons/minus-button.png")' class='button' onclick='decreasePrice()' title="Decrease all price by 5% of Default">
+											<img src='@routes.Assets.versioned("images/icons/arrow-circle-135.png")' class='button' onclick='resetPrice()' title="Reset to Default Ticket Prices">
 										</div>
 									</div>
-                                    <div class="table-row">
-                                        <div class="label">
+									<div class="table-row">
+										<div class="label">
 											<h5>
-                                                <span>Available Airplanes:</span>
-                                                <div style="display: inline-block">
-                                                    <div style="display:flex ; align-items: baseline;">
-                                                        <input type="checkbox" onclick="toggleUtilizationRate($('#planLinkAirplaneSelect'), $(this))" class="toggleUtilizationRateBox"/>
+												<span>Available Airplanes:</span>
+												<div style="display: inline-block">
+													<div style="display:flex ; align-items: baseline;">
+														<input type="checkbox" onclick="toggleUtilizationRate($('#planLinkAirplaneSelect'), $(this))" class="toggleUtilizationRateBox" />
 														<img src='@routes.Assets.versioned("images/icons/clock-select-remain.png")' title="Toggle Utilization Rate">
-														<input type="checkbox" onclick="toggleCondition($('#planLinkAirplaneSelect'), $(this))" class="toggleConditionBox"/>
+														<input type="checkbox" onclick="toggleCondition($('#planLinkAirplaneSelect'), $(this))" class="toggleConditionBox" />
 														<img src='@routes.Assets.versioned("images/icons/gear.png")' title="Toggle Airplane Condition">
-											        </div>
-                                                </div>
-                                            </h5>
+													</div>
+												</div>
+											</h5>
 										</div>
-                                        <!-- 					    			<div class="value"><select id="planLinkAirplaneSelect" multiple="multiple" onchange="updateFrequencyBar($('#planLinkModelSelect').val())"></select></div> -->
-                                        <div class="value">
-                                            <div class="noAirplaneHelp" style="display: none">
+										<!-- 					    			<div class="value"><select id="planLinkAirplaneSelect" multiple="multiple" onchange="updateFrequencyBar($('#planLinkModelSelect').val())"></select></div> -->
+										<div class="value">
+											<div class="noAirplaneHelp" style="display: none">
 												<div class="tooltip">
-                                                    <img src='@routes.Assets.versioned("images/icons/information.png")'>
+													<img src='@routes.Assets.versioned("images/icons/information.png")'>
 													<h5>
 														<span class="tooltiptext below">
 															Purchase airplane
-<!--															<img src='@routes.Assets.versioned("images/clips/buy-airplane.gif")' loading="lazy">-->
-                                                            <img data-src='@routes.Assets.versioned("images/clips/buy-airplane.gif")' class="lazyload" alt="">
+															<!--															<img src='@routes.Assets.versioned("images/clips/buy-airplane.gif")' loading="lazy">-->
+															<img data-src='@routes.Assets.versioned("images/clips/buy-airplane.gif")' class="lazyload" alt="">
 															Or assign airplane to this airport
-<!--															<img src='@routes.Assets.versioned("images/clips/change-airplane-base.gif")' loading="lazy">-->
-                                                            <img data-src='@routes.Assets.versioned("images/clips/change-airplane-base.gif")' class="lazyload" alt="">
-														 </span>
+															<!--															<img src='@routes.Assets.versioned("images/clips/change-airplane-base.gif")' loading="lazy">-->
+															<img data-src='@routes.Assets.versioned("images/clips/change-airplane-base.gif")' class="lazyload" alt="">
+														</span>
 													</h5>
-                                                </div>
-                                                No airplane with this model based in this airport
-                                            </div>
-                                            <div id="planLinkAirplaneSelect" style="display : inline-block;"></div>
-                                        </div>
-                                    </div>
+												</div>
+												No airplane with this model based in this airport
+											</div>
+											<div id="planLinkAirplaneSelect" style="display : inline-block;"></div>
+										</div>
+									</div>
 									<div class="table-row">
 										<div class="label">
 											<h5>
@@ -827,8 +827,8 @@
 												<div class="tooltip">
 													<img src='@routes.Assets.versioned("images/icons/information.png")'>
 													<span class="tooltiptext below">
-														Increase/decrease the flight frequency by selecting/deselecting the airplane icons. <br/>
-                                                        <img data-src='@routes.Assets.versioned("images/clips/flight-frequency.gif")' class="lazyload" alt="">
+														Increase/decrease the flight frequency by selecting/deselecting the airplane icons. <br />
+														<img data-src='@routes.Assets.versioned("images/clips/flight-frequency.gif")' class="lazyload" alt="">
 													</span>
 												</div>
 											</h5>
@@ -836,115 +836,118 @@
 										<!--  <div class="value"><input type="text" id="planLinkFrequency"/></div> -->
 										<div class="value">
 											<div class="frequencyDetail table colored" style="width: 100%">
-												<div class="table-header"/>
-													<div class="cell" style="width: 20%; min-width: 100px;">Airplane</div>
-                                                    <div class="cell" style="width: 20%">Seats Config</div>
-													<div class="cell" style="width: 60%">Flight Frequency</div>
-												</div>
-											</div>
-											<div class="frequencyDetailTotal table" style="width: 100%">
-                                                <div class="table-header"/>
-													<div class="cell" style="width: 20%; min-width: 100px;"></div>
-                                                    <div class="cell" style="width: 20%"></div>
-                                                    <div class="cell" style="width: 60%"></div>
-                                                </div>
-                                                <div class="table-row"/>
-                                                    <div class="cell"></div>
-                                                    <div class="cell"></div>
-                                                    <div class="cell">Total <span class="total"></span> flight(s) per week</div>
-                                                </div>
+												<div class="table-header" />
+												<div class="cell" style="width: 20%; min-width: 100px;">Airplane</div>
+												<div class="cell" style="width: 20%">Seats Config</div>
+												<div class="cell" style="width: 60%">Flight Frequency</div>
 											</div>
 										</div>
-									</div>
-									<div class="table-row">
-										<div class="label"><h5>Capacity (Y/J/F):</h5></div>
-										<div class="value">
-											<span id="planLinkCapacity"></span>
-											<div class="future">
-												<div style="display:flex; align-items: center;">
-													&nbsp;(<img class="awaitingAirplanes" src='@routes.Assets.versioned("images/icons/information.png")' title="Capacity when all airplanes are delivered"><span class="capacity"></span>)
-												</div>
-											</div>
+										<div class="frequencyDetailTotal table" style="width: 100%">
+											<div class="table-header" />
+											<div class="cell" style="width: 20%; min-width: 100px;"></div>
+											<div class="cell" style="width: 20%"></div>
+											<div class="cell" style="width: 60%"></div>
 										</div>
-									</div>
-<!--									<div class="table-row">-->
-<!--										<div class="label">-->
-<!--											<h5>-->
-<!--												<span>Seat Configurations:</span>-->
-<!--												<div class="tooltip">-->
-<!--													<img src='@routes.Assets.versioned("images/icons/information.png")'>-->
-<!--													<span class="tooltiptext">-->
-<!--														Change class configuration of the cabin<br/>-->
-<!--														<br/>-->
-<!--														Y - Economy class<br/>-->
-<!--														J - Business class<br/>-->
-<!--														F - First class<br/>-->
-<!--														<br/>-->
-<!--														<img src='@routes.Assets.versioned("images/clips/seat-configuration.gif")'>-->
-<!--													</span>-->
-<!--												</div>-->
-<!--											</h5>-->
-<!--										</div>-->
-<!--										<div class="value"><div id="seatConfigurationGauge"></div></div>-->
-<!--									</div>-->
-									<div class="table-row">
-										<div class="label"><h5>Service Level:</h5></div>
-										<div class="value"><div id="serviceLevelBar"  data-empty-icon='@routes.Assets.versioned("images/icons/star-empty.png")' data-fill-icon='@routes.Assets.versioned("images/icons/star.png")'></div>
-										<input type="hidden" id="planLinkServiceLevel" value="1"/></div>
-									</div>
-									<div class="table-row">
-										<div class="label"><h5>Office Staff Req.:</h5></div>
-										<div class="value" style="display:flex; align-items: center"><span class="staffRequired"></span>
-<!--											<img src='@routes.Assets.versioned("images/icons/information.png")' onmouseover="showLinkStaffBreakdown()" onmouseout="closeModal($('#linkStaffBreakdownModal'))">-->
-											<span id="linkStaffBreakdownTooltip" class="tooltip">
-												<img src='@routes.Assets.versioned("images/icons/information.png")'>
-												<span class="tooltiptext alignLeft" style="width: 400px;">
-													<h4 style="margin-bottom: 10px;">Office Staff Requirement Breakdown <span class="airlineName"></span></h4>
-													<div class="table data" style="width: 100%;">
-														<div class="table-row">
-															<div class="label"><h5>Flight Type:</h5></div>
-															<div class="value flightType"></div>
-														</div>
-														<div class="table-row">
-															<div class="label"><h5>Basic support:</h5></div>
-															<div class="value basic"></div>
-														</div>
-														<div class="table-row">
-															<div class="label"><h5>Frequency support:</h5></div>
-															<div class="value frequency"></div>
-														</div>
-														<div class="table-row">
-															<div class="label"><h5>Capacity support:</h5></div>
-															<div class="value capacity"></div>
-														</div>
-														<div class="table-row">
-															<div class="label"><h5>Modifier:</h5></div>
-															<div class="value modifier"></div>
-														</div>
-													</div>
-													<h4 style="margin-top: 10px">Total: <span class="total"></span></h4>
-												</span>
-											</span>
-										</div>
+										<div class="table-row" />
+										<div class="cell"></div>
+										<div class="cell"></div>
+										<div class="cell">Total <span class="total"></span> flight(s) per week</div>
 									</div>
 								</div>
-								<div class="linkRejection warning">
-									<div><img src='@routes.Assets.versioned("images/icons/prohibition.png")'><span id="linkRejectionReason"></span></div>
-								</div>
-								<div class="warningList">
-								</div>
-
-								<div class="overtimeCompensation warning" style="display: flex; align-items: center;">
-									<img src='@routes.Assets.versioned("images/icons/exclamation-red-frame.png")'>&nbsp;
-									Exceeding operation capacity of current base. Extra overtime compensation of&nbsp;
-									$<span class="amount"></span>&nbsp;
-									will be charged per week for this change.
-								</div>
-								<div class="button modifyLink" id="addLinkButton" onclick="linkConfirmation()">Create</div>
-								<div class="button modifyLink" id="updateLinkButton" onclick="linkConfirmation()">Update</div>
-								<div class="button" id="deleteLinkButton" onclick="promptConfirm('Delete this route?', deleteLink)">Delete</div>
-								<div class="button" id="cancelLinkButton" onclick="cancelPlanLink()">Cancel</div>
 							</div>
+						</div>
+						<div class="table-row">
+							<div class="label"><h5>Capacity (Y/J/F):</h5></div>
+							<div class="value">
+								<span id="planLinkCapacity"></span>
+								<div class="future">
+									<div style="display:flex; align-items: center;">
+										&nbsp;(<img class="awaitingAirplanes" src='@routes.Assets.versioned("images/icons/information.png")' title="Capacity when all airplanes are delivered"><span class="capacity"></span>)
+									</div>
+								</div>
+							</div>
+						</div>
+						<!--									<div class="table-row">-->
+						<!--										<div class="label">-->
+						<!--											<h5>-->
+						<!--												<span>Seat Configurations:</span>-->
+						<!--												<div class="tooltip">-->
+						<!--													<img src='@routes.Assets.versioned("images/icons/information.png")'>-->
+						<!--													<span class="tooltiptext">-->
+						<!--														Change class configuration of the cabin<br/>-->
+						<!--														<br/>-->
+						<!--														Y - Economy class<br/>-->
+						<!--														J - Business class<br/>-->
+						<!--														F - First class<br/>-->
+						<!--														<br/>-->
+						<!--														<img src='@routes.Assets.versioned("images/clips/seat-configuration.gif")'>-->
+						<!--													</span>-->
+						<!--												</div>-->
+						<!--											</h5>-->
+						<!--										</div>-->
+						<!--										<div class="value"><div id="seatConfigurationGauge"></div></div>-->
+						<!--									</div>-->
+						<div class="table-row">
+							<div class="label"><h5>Service Level:</h5></div>
+							<div class="value">
+								<div id="serviceLevelBar" data-empty-icon='@routes.Assets.versioned("images/icons/star-empty.png")' data-fill-icon='@routes.Assets.versioned("images/icons/star.png")'></div>
+								<input type="hidden" id="planLinkServiceLevel" value="1" />
+							</div>
+						</div>
+						<div class="table-row">
+							<div class="label"><h5>Office Staff Req.:</h5></div>
+							<div class="value" style="display:flex; align-items: center">
+								<span class="staffRequired"></span>
+								<!--											<img src='@routes.Assets.versioned("images/icons/information.png")' onmouseover="showLinkStaffBreakdown()" onmouseout="closeModal($('#linkStaffBreakdownModal'))">-->
+								<span id="linkStaffBreakdownTooltip" class="tooltip">
+									<img src='@routes.Assets.versioned("images/icons/information.png")'>
+									<span class="tooltiptext alignLeft" style="width: 400px;">
+										<h4 style="margin-bottom: 10px;">Office Staff Requirement Breakdown <span class="airlineName"></span></h4>
+										<div class="table data" style="width: 100%;">
+											<div class="table-row">
+												<div class="label"><h5>Flight Type:</h5></div>
+												<div class="value flightType"></div>
+											</div>
+											<div class="table-row">
+												<div class="label"><h5>Basic support:</h5></div>
+												<div class="value basic"></div>
+											</div>
+											<div class="table-row">
+												<div class="label"><h5>Frequency support:</h5></div>
+												<div class="value frequency"></div>
+											</div>
+											<div class="table-row">
+												<div class="label"><h5>Capacity support:</h5></div>
+												<div class="value capacity"></div>
+											</div>
+											<div class="table-row">
+												<div class="label"><h5>Modifier:</h5></div>
+												<div class="value modifier"></div>
+											</div>
+										</div>
+										<h4 style="margin-top: 10px">Total: <span class="total"></span></h4>
+									</span>
+								</span>
+							</div>
+						</div>
+					</div>
+					<div class="linkRejection warning">
+						<div><img src='@routes.Assets.versioned("images/icons/prohibition.png")'><span id="linkRejectionReason"></span></div>
+					</div>
+					<div class="warningList">
+					</div>
+
+					<div class="overtimeCompensation warning" style="display: flex; align-items: center;">
+						<img src='@routes.Assets.versioned("images/icons/exclamation-red-frame.png")'>&nbsp;
+						Exceeding operation capacity of current base. Extra overtime compensation of&nbsp;
+						$<span class="amount"></span>&nbsp;
+						will be charged per week for this change.
+					</div>
+					<div class="button modifyLink" id="addLinkButton" onclick="linkConfirmation()">Create</div>
+					<div class="button modifyLink" id="updateLinkButton" onclick="linkConfirmation()">Update</div>
+					<div class="button" id="deleteLinkButton" onclick="promptConfirm('Delete this route?', deleteLink)">Delete</div>
+					<div class="button" id="cancelLinkButton" onclick="cancelPlanLink()">Cancel</div>
+				</div>
 						</div>
 		<!-- 		    	end details panel -->
 						<div id="extendedPanel" class="section" style="width: 95%; float: left; display: none;">
@@ -3573,7 +3576,7 @@
 			</div>
 		</div>
 		<div style="width: 100%;">
-			<div class="button" id="planToAirportButton" onclick="planToAirportFromInfoWindow()" >Plan Flight</div>
+			<div class="button" id="planToAirportButton" onclick="planToAirportFromInfoWindow()">Plan Flight</div>
 			<div class="button" id="viewAirportButton" data-link="airport" onclick="showAirportDetails($('#airportPopupId').val())">View Airport</div>
 			<div class="button" id="toggleAirportLinksButton" onclick="toggleAirportLinksView()">Flight Map</div>
 			<div class="button" id="toggleDeparturesButton" data-link="departure" onclick="showDeparturesCanvas()">Departures</div>
