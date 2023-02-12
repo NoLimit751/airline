@@ -91,22 +91,23 @@ object AssetBlueprintGenerator {
   }
 
   def generateBlueprints(airport : Airport, iterationCount : Int, maxCount : Int, candidates : AirportAssetType.ValueSet, generatedBlueprints : ListBuffer[AirportAssetType.Value]) : Unit =  {
-    val limit = Math.min(getAirportBlueprintsLimit(airport) - generatedBlueprints.size, maxCount)
+    //val limit = Math.min(getAirportBlueprintsLimit(airport) - generatedBlueprints.size, maxCount)
     val assetTypes = candidates.toList.sortBy(_.id).reverse //consider the bigger enum ID first (lower items have higher precedence within the group)
     val newAssetTypes = ListBuffer[AirportAssetType.Value]()
     val random = new SecureRandom(BigInteger.valueOf(airport.id).toByteArray)
-    for (i <- 0 until iterationCount) {
+    for (i <- 0 until assetTypes.length+1) { // It used to be until iterationCount, now it keeps going to the end of list
       assetTypes.foreach { assetType =>
-        if (newAssetTypes.length >= limit) {
+        // This was used do limit number of assets per airport, I disabled it
+        /*if (newAssetTypes.length >= limit) {
           generatedBlueprints.addAll(newAssetTypes)
           return
-        }
-        if (isApplicable(assetType, airport)) {
-          val odds = generationOdds(assetType, airport)
-          if (odds >= random.nextDouble()) { //picked!
+        }*/
+        if ((!newAssetTypes.contains(assetType)) && (isApplicable(assetType, airport))) { // Added a check so that there can be no duplicates
+          //val odds = generationOdds(assetType, airport)
+          //if (odds >= random.nextDouble()) { // This is used to pick assets by chance, but I disabled it. If the airport fulfills the requirements, let them build it
             newAssetTypes.append(assetType)
-          }
-        }
+          //}
+        }  
       }
     }
 
@@ -183,7 +184,8 @@ object AssetBlueprintGenerator {
 
   val getAirportBlueprintsLimit = (airport : Airport) => airport.size
 
-  val scienceParkIatas = List("SFO", "SEA", "SZX", "SIN", "LHR", "ICN", "TPE", "AMS", "BER", "BOS")
+  val scienceParkIatas = List("SFO", "SEA", "SZX", "SIN", "LHR", "ICN", "TPE", "AMS", "BER", "BOS") // It's a short list, but I will add further cities manually during play
+
 
   import AirportAssetType._
   val isApplicable = (assetType : AirportAssetType.Value, airport : Airport) => assetType match {
@@ -209,21 +211,21 @@ object AssetBlueprintGenerator {
         feature.featureType == AirportFeatureType.VACATION_HUB ||
         feature.featureType == AirportFeatureType.INTERNATIONAL_HUB
       }.isDefined
-    case SOLAR_POWER_PLANT =>
-      AirportWeatherData.getAirportWeatherData(airport) match {
+    case SOLAR_POWER_PLANT => false // This works horribly, it puts solar plants into polar circle. Disabled temporarily, will add manually where needed.
+      /*AirportWeatherData.getAirportWeatherData(airport) match {
         case Some(data) => data.sunHourPerDay >= 12
         case None => false
-      }
-    case BEACH_RESORT =>
-      AirportWeatherData.getAirportWeatherData(airport) match {
+      }*/
+    case BEACH_RESORT => false // This works horribly as it doesn't take seasons into account, and the range is too small. Disabled temporarily, will add manually where needed
+      /*AirportWeatherData.getAirportWeatherData(airport) match {
         case Some(data) => data.minTemperature >= 20 && data.maxTemperature <= 30
         case None => false
-      }
-    case SKI_RESORT =>
-      AirportWeatherData.getAirportWeatherData(airport) match {
+      }*/
+    case SKI_RESORT => false // This works horribly as it doesn't take seasons into account. Disabled temporarily, will add manually where needed
+      /*AirportWeatherData.getAirportWeatherData(airport) match {
         case Some(data) => data.snowPerDay >= 0.4
         case None => false
-      }
+      }*/
     case TRAVEL_AGENCY =>
       airport.basePopulation >= 300000 && airport.baseIncomeLevel >= 25
     case SPORT_ARENA =>
