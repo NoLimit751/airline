@@ -1,6 +1,7 @@
 package com.patson
 
 import java.util.{ArrayList, Collections}
+import java.io._
 import com.patson.data.{AirportSource, CountrySource, EventSource}
 import com.patson.model.event.{EventType, Olympics}
 import com.patson.model.{PassengerType, _}
@@ -52,24 +53,60 @@ object DemandGenerator {
     val allDemands = new ArrayList[(Airport, List[(Airport, (PassengerType.Value, LinkClassValues))])]()
 	  
 	  val countryRelationships = CountrySource.getCountryMutualRelationships()
+
+    // Used for testing purposes
+    //val demandTotal = new PrintWriter(new File("demandTotal.csv"))
+    //val demandDetailed = new PrintWriter(new File("demandDetailed.csv"))
+
 	  airports.foreach {  fromAirport =>
-	    val demandList = Collections.synchronizedList(new ArrayList[(Airport, (PassengerType.Value, LinkClassValues))]())
+	    // Used for testing purposes
+      /*var businessF = 0
+      var businessJ = 0
+      var businessY = 0
+      var touristF = 0
+      var touristJ = 0
+      var touristY = 0*/
+      
+      // Normal code begins
+      val demandList = Collections.synchronizedList(new ArrayList[(Airport, (PassengerType.Value, LinkClassValues))]())
 	    airports.par.foreach { toAirport =>
-//	      if (fromAirport != toAirport) {
-          val relationship = countryRelationships.getOrElse((fromAirport.countryCode, toAirport.countryCode), 0)
-          val businessDemand = computeDemandBetweenAirports(fromAirport, toAirport, relationship, PassengerType.BUSINESS)
-          val touristDemand = computeDemandBetweenAirports(fromAirport, toAirport, relationship, PassengerType.TOURIST)
-    	          
-          if (businessDemand.total > 0) {
-            demandList.add((toAirport, (PassengerType.BUSINESS, businessDemand)))
-          } 
-          if (touristDemand.total > 0) {
-            demandList.add((toAirport, (PassengerType.TOURIST, touristDemand)))
-          }
-//	      }
-	    }
+        val relationship = countryRelationships.getOrElse((fromAirport.countryCode, toAirport.countryCode), 0)
+        val businessDemand = computeDemandBetweenAirports(fromAirport, toAirport, relationship, PassengerType.BUSINESS)         
+        val touristDemand = computeDemandBetweenAirports(fromAirport, toAirport, relationship, PassengerType.TOURIST)
+
+        if (businessDemand.total > 0) {
+          demandList.add((toAirport, (PassengerType.BUSINESS, businessDemand)))
+        } 
+        if (touristDemand.total > 0) {
+          demandList.add((toAirport, (PassengerType.TOURIST, touristDemand)))         
+        }
+        
+        // Used for testing purposes
+        /*businessF += businessDemand.firstVal
+        businessJ += businessDemand.businessVal 
+        businessY += businessDemand.economyVal 
+        touristF += touristDemand.firstVal
+        touristJ += touristDemand.businessVal
+        touristY += touristDemand.economyVal */   
+        
+        // Used for testing purposes, to see demmand of a single (or all if you remove &&) airport(s) towards every other airport
+        /*if (((businessDemand.total > 0) || (touristDemand.total > 0)) && (fromAirport.id == 3805)) {   
+          println("Total demand from " + fromAirport.id + " " + fromAirport.iata + " to " + toAirport.id + " " + toAirport.iata + " is " + "%05d".format(businessDemand.total + touristDemand.total) + " (B:" + "%04d".format(businessDemand.total)  + " T:" + "%04d".format(touristDemand.total) + ")" + " out of which F: " + "%04d".format(businessDemand.firstVal + touristDemand.firstVal) + " (B:" + "%04d".format(businessDemand.firstVal)  + " T:" + "%04d".format(touristDemand.firstVal) + ")" + " | Y: " + "%04d".format(businessDemand.businessVal + touristDemand.businessVal) + " (B:" + "%04d".format(businessDemand.businessVal)  + " T:" + "%04d".format(touristDemand.businessVal) + ")" + " | J: " + "%04d".format(businessDemand.economyVal + touristDemand.economyVal) + " (B:" + "%04d".format(businessDemand.economyVal)  + " T:" + "%04d".format(touristDemand.economyVal) + ")" + " (" + toAirport.name + ", " + toAirport.city + ", " + toAirport.countryCode + ")")
+        }*/
+        /*if ((businessDemand.total > 0) || (touristDemand.total > 0)) {   
+        demandDetailed.write(fromAirport.iata + ";" + fromAirport.name + ";" + fromAirport.city + ";" + fromAirport.countryCode + ";" + toAirport.iata + ";" + toAirport.name + ";" + toAirport.city + ";" + toAirport.countryCode + ";" + businessDemand.firstVal + ";" + businessDemand.businessVal + ";" + businessDemand.economyVal + ";" + touristDemand.firstVal + ";" + touristDemand.businessVal + ";" + touristDemand.economyVal + "\n")     
+        }*/
+      }
 	    allDemands.add((fromAirport, demandList.asScala.toList))
+      
+      // Used for testing purposes, to see total demmand of a single airport towards every other airport, very useful for remote airports which need to be connected to a hub
+      //println("Total demand from " + fromAirport.id + " " + fromAirport.iata + " to every other airport is " + "%05d".format(businessF + businessJ + businessY + touristF + touristJ + touristY) + " (B:" + "%04d".format(businessF + businessJ + businessY)  + " T:" + "%04d".format(touristF + touristJ + touristY) + ")" + " out of which F: " + "%04d".format(businessF + touristF) + " (B:" + "%04d".format(businessF)  + " T:" + "%04d".format(touristF) + ")" + " | Y: " + "%04d".format(businessJ + touristJ) + " (B:" + "%04d".format(businessJ)  + " T:" + "%04d".format(touristJ) + ")" + " | J: " + "%04d".format(businessY + touristY) + " (B:" + "%04d".format(businessY)  + " T:" + "%04d".format(touristY) + ")")
+      // demandTotal.write(fromAirport.iata + ";" + businessF + ";" + businessJ + ";" + businessY + ";" + touristF + ";" + touristJ +";" + touristY + "\n")
     }
+    
+    // Used for testing purposes
+    //demandTotal.close
+    //demandDetailed.close
 
     val allDemandsAsScala = allDemands.asScala
 
@@ -241,6 +278,11 @@ object DemandGenerator {
         firstClassDemand = (firstClassDemand * 2.5).toInt
         businessClassDemand = (businessClassDemand * 2.5).toInt
       }
+      
+    // Used for testing purposes, to see demmand of a single (or all if you remove &&) airport(s) towards every other airport
+    /*if (((firstClassDemand + businessClassDemand + economyClassDemand) > 0) && (fromAirport.id == 3805)) {
+      println("Demmand from " + fromAirport.id + " " + fromAirport.iata + " to " + toAirport.id + " " + toAirport.iata + " is " + "%05d".format((firstClassDemand + businessClassDemand + economyClassDemand)) + " out of which F: " + "%04d".format(firstClassDemand) + " Y: " + "%04d".format(businessClassDemand) + " J: " + "%04d".format(economyClassDemand) + " (" + toAirport.name + ", " + toAirport.city + ", " + toAirport.countryCode + ")")
+    }*/
       
       LinkClassValues.getInstance(economyClassDemand, businessClassDemand, firstClassDemand)
     }
