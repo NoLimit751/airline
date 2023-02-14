@@ -117,15 +117,15 @@ object AirlineSimulation {
         val othersSummary = Map[OtherIncomeItemType.Value, Long]()
         //calculate service funding required
         val linksOfThisAirline = allFlightLinksByAirlineId.getOrElse(airline.id, List.empty)
-        var serviceFunding = getServiceFunding(airline.getTargetServiceQuality(), linksOfThisAirline)
-        val targetServiceQuality =
-          if (airline.getBalance() < 0) { //cease all funding, target will be 0
-            serviceFunding = 0
-            0
-          } else {
-            airline.getTargetServiceQuality()
-          }
         val currentServiceQuality = airline.getCurrentServiceQuality()
+        val targetServiceQuality = airline.getTargetServiceQuality() // This used to be more complicated, it used to go to 0 if you don't have any money, but I don't like that approach, airlines can still function with debts
+        var serviceFunding = // Pay for current service, unless it is 90% close to target, then pay target. It makes no sense to me to pay full price all the time which forces you to make small steps and micromanage
+          if (currentServiceQuality > (0.9 * targetServiceQuality)) {
+            getServiceFunding(targetServiceQuality, linksOfThisAirline)
+          } else {
+            getServiceFunding(currentServiceQuality.toInt, linksOfThisAirline)
+          }
+
         airline.setCurrentServiceQuality(getNewQuality(currentServiceQuality, targetServiceQuality))
 
         othersSummary.put(OtherIncomeItemType.SERVICE_INVESTMENT, serviceFunding * -1)
