@@ -53,8 +53,8 @@ object AirportAssetType extends Enumeration {
         override val baseCost : Long = 500_000_000
         override val baseRequirement : Int = 5
 
-        override val maxRoi : Double = 1.0 / 25
-        override val initRoi : Double = 1.0 / 70
+        override val maxRoi : Double = 1.0 / 20 // Was 25
+        override val initRoi : Double = 1.0 / 50 // Was 70
     }
 
     case class BeachResortAssetType() extends HotelAssetType {
@@ -65,8 +65,8 @@ object AirportAssetType extends Enumeration {
         override val baseCost : Long = 200_000_000
         override val baseRequirement : Int = 3
 
-        override val maxRoi : Double = 1.0 / 20
-        override val initRoi : Double = 1.0 / 50
+        override val maxRoi : Double = 1.0 / 15 // Was 20
+        override val initRoi : Double = 1.0 / 40 // Was 50
     }
 
     case class ConventionCenterAssetType() extends AirportAssetType {
@@ -74,11 +74,11 @@ object AirportAssetType extends Enumeration {
         override val constructionDuration : Int = 6 * 52
         //override val descriptions = List(s"Convention center to boost business")
         override val baseBoosts : List[AirportBoost] = List(AirportBoost(FINANCIAL_HUB, 8))
-        override val baseCost : Long = 2_000_000_000
+        override val baseCost : Long = 800_000_000 // Changed from 2000m
         override val baseRequirement : Int = 11
 
-        override val maxRoi : Double = 1.0 / 50
-        override val initRoi : Double = 1.0 / 100
+        override val maxRoi : Double = 1.0 / 30 // Was 50
+        override val initRoi : Double = 1.0 / 60 // Was 100
     }
 
     case class MuseumAssetType() extends AdmissionAssetType {
@@ -86,11 +86,11 @@ object AirportAssetType extends Enumeration {
         override val constructionDuration : Int = 4 * 52
         //override val descriptions = List(s"Museum attracts tourists")
         override val baseBoosts : List[AirportBoost] = List(AirportBoost(INTERNATIONAL_HUB, 2))
-        override val baseCost : Long = 800_000_000
+        override val baseCost : Long = 500_000_000 // Changed from 800m
         override val baseRequirement : Int = 9
 
-        override val maxRoi : Double = 1.0 / 50
-        override val initRoi : Double = 1.0 / 100
+        override val maxRoi : Double = 1.0 / 40 // Was 50
+        override val initRoi : Double = 1.0 / 80 // Was 100
     }
 
     case class ResidentialComplexAssetType() extends RentalAssetType {
@@ -101,8 +101,8 @@ object AirportAssetType extends Enumeration {
         override val baseCost : Long = 200_000_000
         override val baseRequirement : Int = 3
 
-        override val maxRoi : Double = 1.0 / 25
-        override val initRoi : Double = 1.0 / 50
+        override val maxRoi : Double = 1.0 / 20 // Was 25
+        override val initRoi : Double = 1.0 / 40 // Was 50
     }
 
     case class SportArenaAssetType() extends AdmissionAssetType {
@@ -110,11 +110,11 @@ object AirportAssetType extends Enumeration {
         override val constructionDuration : Int = 2 * 52
         //override val descriptions = List(s"Sport Arena")
         override val baseBoosts : List[AirportBoost] = List(AirportBoost(INCOME, 0.1))
-        override val baseCost : Long = 200_000_000
+        override val baseCost : Long = 300_000_000 // Changed from 200m
         override val baseRequirement : Int = 3
 
-        override val maxRoi : Double = 1.0 / 35
-        override val initRoi : Double = 1.0 / 100
+        override val maxRoi : Double = 1.0 / 30 // Was 35
+        override val initRoi : Double = 1.0 / 70 // Was 100
     }
 
     case class ShoppingMallAssetType() extends RentalAssetType {
@@ -122,11 +122,11 @@ object AirportAssetType extends Enumeration {
         override val constructionDuration : Int = 3 * 52
         //override val descriptions = List(s"Shopping Mall")
         override val baseBoosts : List[AirportBoost] = List(AirportBoost(INCOME, 0.2))
-        override val baseCost : Long = 800_000_000
+        override val baseCost : Long = 200_000_000 // Changed from 800m
         override val baseRequirement : Int = 5
 
-        override val maxRoi : Double = 1.0 / 25
-        override val initRoi : Double = 1.0 / 80
+        override val maxRoi : Double = 1.0 / 15 // Was 25
+        override val initRoi : Double = 1.0 / 40 // Was 80
     }
 
     case class GrandHotelTouristAssetType() extends HotelAssetType {
@@ -136,8 +136,8 @@ object AirportAssetType extends Enumeration {
         override val baseCost : Long = 300_000_000
         override val baseRequirement : Int = 5
 
-        override val maxRoi : Double = 1.0 / 35
-        override val initRoi : Double = 1.0 / 60
+        override val maxRoi : Double = 1.0 / 20 // Was 35
+        override val initRoi : Double = 1.0 / 50 // Was 60
     }
     case class GrandHotelBusinessAssetType() extends HotelAssetType {
         override val label = "Grand Business Hotel"
@@ -146,8 +146,8 @@ object AirportAssetType extends Enumeration {
         override val baseCost : Long = 300_000_000
         override val baseRequirement : Int = 5
 
-        override val maxRoi : Double = 1.0 / 35
-        override val initRoi : Double = 1.0 / 60
+        override val maxRoi : Double = 1.0 / 20 // Was 35
+        override val initRoi : Double = 1.0 / 50 // Was 60
     }
     case class AmusementParkAssetType() extends AdmissionAssetType {
         override val label = "Amusement Park"
@@ -156,8 +156,8 @@ object AirportAssetType extends Enumeration {
         override val baseCost : Long = 800_000_000
         override val baseRequirement : Int = 9
 
-        override val maxRoi : Double = 1.0 / 20
-        override val initRoi : Double = 1.0 / 100
+        override val maxRoi : Double = 1.0 / 15 // Was 20
+        override val initRoi : Double = 1.0 / 50 // Was 100
     }
     case class SubwayAssetType() extends AirportAssetType {
         override val label = "Subway"
@@ -166,8 +166,8 @@ object AirportAssetType extends Enumeration {
         override val baseCost : Long = 4_000_000_000L
         override val baseRequirement : Int = 11
 
-        override val maxRoi : Double = 1.0 / 80
-        override val initRoi : Double = 1.0 / 200
+        override val maxRoi : Double = 1.0 / 50 // Was 80
+        override val initRoi : Double = 1.0 / 120 // Was 200
     }
     case class StadiumAssetType() extends AdmissionAssetType {
         override val label = "Stadium"
@@ -176,8 +176,8 @@ object AirportAssetType extends Enumeration {
         override val baseCost : Long = 600_000_000
         override val baseRequirement : Int = 10
 
-        override val maxRoi : Double = 1.0 / 50
-        override val initRoi : Double = 1.0 / 200
+        override val maxRoi : Double = 1.0 / 25 // Was 50
+        override val initRoi : Double = 1.0 / 50 // Was 200
     }
     case class ScienceParkAssetType() extends RentalAssetType {
         override val label = "Science Park"
@@ -186,8 +186,8 @@ object AirportAssetType extends Enumeration {
         override val baseCost : Long = 5_000_000_000L
         override val baseRequirement : Int = 12
 
-        override val maxRoi : Double = 1.0 / 100
-        override val initRoi : Double = 1.0 / 500
+        override val maxRoi : Double = 1.0 / 80 // Was 100
+        override val initRoi : Double = 1.0 / 400 // Was 500
     }
     case class LandmarkAssetType() extends AdmissionAssetType {
         override val label = "Landmark"
@@ -196,8 +196,8 @@ object AirportAssetType extends Enumeration {
         override val baseCost : Long = 1_000_000_000
         override val baseRequirement : Int = 11
 
-        override val maxRoi : Double = 1.0 / 50
-        override val initRoi : Double = 1.0 / 200
+        override val maxRoi : Double = 1.0 / 30 // Was 50
+        override val initRoi : Double = 1.0 / 100 // Was 200
     }
 
     case class SolarPowerPlantAssetType() extends AirportAssetType {
@@ -207,8 +207,8 @@ object AirportAssetType extends Enumeration {
         override val baseCost : Long = 500000000
         override val baseRequirement : Int = 5
 
-        override val maxRoi : Double = 1.0 / 30
-        override val initRoi : Double = 1.0 / 40
+        override val maxRoi : Double = 1.0 / 15 // Was 30
+        override val initRoi : Double = 1.0 / 30 // Was 40
     }
     case class TravelAgencyAssetType() extends AirportAssetType {
         override val label = "Travel Agency"
@@ -217,8 +217,8 @@ object AirportAssetType extends Enumeration {
         override val baseCost : Long = 100_000_000
         override val baseRequirement : Int = 3
 
-        override val maxRoi : Double = 1.0 / 10
-        override val initRoi : Double = 1.0 / 100
+        override val maxRoi : Double = 1.0 / 10 // Was 10
+        override val initRoi : Double = 1.0 / 70 // Was 100
     }
     case class GameArcadeAssetType() extends AirportAssetType {
         override val label = "Game Arcade"
@@ -227,8 +227,8 @@ object AirportAssetType extends Enumeration {
         override val baseCost : Long = 30_000_000
         override val baseRequirement : Int = 3
 
-        override val maxRoi : Double = 1.0 / 15
-        override val initRoi : Double = 1.0 / 50
+        override val maxRoi : Double = 1.0 / 12 // Was 15
+        override val initRoi : Double = 1.0 / 30 // Was 50
     }
     case class CinemaAssetType() extends AdmissionAssetType {
         override val label = "Cinema"
@@ -237,8 +237,8 @@ object AirportAssetType extends Enumeration {
         override val baseCost : Long = 50_000_000
         override val baseRequirement : Int = 3
 
-        override val maxRoi : Double = 1.0 / 30
-        override val initRoi : Double = 1.0 / 50
+        override val maxRoi : Double = 1.0 / 20 // Was 30
+        override val initRoi : Double = 1.0 / 40 // Was 50
     }
     case class InnAssetType() extends HotelAssetType {
         override val label = "Inn"
@@ -247,8 +247,8 @@ object AirportAssetType extends Enumeration {
         override val baseCost : Long = 10_000_000
         override val baseRequirement : Int = 1
 
-        override val maxRoi : Double = 1.0 / 8
-        override val initRoi : Double = 1.0 / 30
+        override val maxRoi : Double = 1.0 / 8 // Was 8
+        override val initRoi : Double = 1.0 / 25 // Was 30
     }
     case class GolfCourseAssetType() extends AdmissionAssetType {
         override val label = "Golf Course"
@@ -257,8 +257,8 @@ object AirportAssetType extends Enumeration {
         override val baseCost : Long = 400_000_000
         override val baseRequirement : Int = 5
 
-        override val maxRoi : Double = 1.0 / 25
-        override val initRoi : Double = 1.0 / 80
+        override val maxRoi : Double = 1.0 / 25 // Was 25
+        override val initRoi : Double = 1.0 / 60 // Was 80
     }
     case class OfficeBuilding1AssetType() extends RentalAssetType {
         override val label = "Office Building I"
@@ -267,8 +267,8 @@ object AirportAssetType extends Enumeration {
         override val baseCost : Long = 300_000_000
         override val baseRequirement : Int = 7
 
-        override val maxRoi : Double = 1.0 / 35
-        override val initRoi : Double = 1.0 / 70
+        override val maxRoi : Double = 1.0 / 25 // Was 35
+        override val initRoi : Double = 1.0 / 50 // Was 70
     }
     case class AverageHotelAssetType() extends HotelAssetType {
         override val label = "Hotel"
@@ -277,8 +277,8 @@ object AirportAssetType extends Enumeration {
         override val baseCost : Long = 100_000_000
         override val baseRequirement : Int = 5
 
-        override val maxRoi : Double = 1.0 / 25
-        override val initRoi : Double = 1.0 / 60
+        override val maxRoi : Double = 1.0 / 20 // Was 25
+        override val initRoi : Double = 1.0 / 50 // Was 60
     }
     case class OfficeBuilding2AssetType() extends RentalAssetType {
         override val label = "Office Building II"
@@ -287,8 +287,8 @@ object AirportAssetType extends Enumeration {
         override val baseCost : Long = 500_000_000
         override val baseRequirement : Int = 9
 
-        override val maxRoi : Double = 1.0 / 45
-        override val initRoi : Double = 1.0 / 90
+        override val maxRoi : Double = 1.0 / 30 // Was 45
+        override val initRoi : Double = 1.0 / 60 // Was 90
     }
     case class RestaurantAssetType() extends AirportAssetType {
         override val label = "Restaurant"
@@ -297,8 +297,8 @@ object AirportAssetType extends Enumeration {
         override val baseCost : Long = 10_000_000
         override val baseRequirement : Int = 1
 
-        override val maxRoi : Double = 1.0 / 10
-        override val initRoi : Double = 1.0 / 50
+        override val maxRoi : Double = 1.0 / 10 // Was 10
+        override val initRoi : Double = 1.0 / 30 // Was 50
     }
     case class OfficeBuilding3AssetType() extends RentalAssetType {
         override val label = "Office Building III"
@@ -307,8 +307,8 @@ object AirportAssetType extends Enumeration {
         override val baseCost : Long = 1_000_000_000
         override val baseRequirement : Int = 11
 
-        override val maxRoi : Double = 1.0 / 55
-        override val initRoi : Double = 1.0 / 100
+        override val maxRoi : Double = 1.0 / 40 // Was 55
+        override val initRoi : Double = 1.0 / 80 // Was 100
     }
     case class LuxuriousHotelAssetType() extends HotelAssetType {
         override val label = "Luxurious Hotel"
@@ -317,8 +317,8 @@ object AirportAssetType extends Enumeration {
         override val baseCost : Long = 500_000_000
         override val baseRequirement : Int = 7
 
-        override val maxRoi : Double = 1.0 / 30
-        override val initRoi : Double = 1.0 / 100
+        override val maxRoi : Double = 1.0 / 30 // Was 30
+        override val initRoi : Double = 1.0 / 80 // Was 100
     }
     case class OfficeBuilding4AssetType() extends RentalAssetType {
         override val label = "Office Building IV"
@@ -327,8 +327,8 @@ object AirportAssetType extends Enumeration {
         override val baseCost : Long = 1_500_000_000
         override val baseRequirement : Int = 12
 
-        override val maxRoi : Double = 1.0 / 65
-        override val initRoi : Double = 1.0 / 120
+        override val maxRoi : Double = 1.0 / 50 // Was 65
+        override val initRoi : Double = 1.0 / 100 // Was 120
     }
     case class CityTransitAssetType() extends AirportAssetType {
         override val label = "City Transit"
@@ -337,8 +337,8 @@ object AirportAssetType extends Enumeration {
         override val baseCost : Long = 2_000_000_000
         override val baseRequirement : Int = 10
 
-        override val maxRoi : Double = 1.0 / 80
-        override val initRoi : Double = 1.0 / 150
+        override val maxRoi : Double = 1.0 / 40 // Was 80
+        override val initRoi : Double = 1.0 / 100 // Was 150
     }
     case class AirportHotelAssetType() extends HotelAssetType {
         override val label = "Airport Hotel"
@@ -347,8 +347,8 @@ object AirportAssetType extends Enumeration {
         override val baseCost : Long = 200_000_000
         override val baseRequirement : Int = 7
 
-        override val maxRoi : Double = 1.0 / 20
-        override val initRoi : Double = 1.0 / 60
+        override val maxRoi : Double = 1.0 / 12 // Was 20
+        override val initRoi : Double = 1.0 / 30 // Was 60
 
     }
 

@@ -552,24 +552,24 @@ object AirportAssetSimulation {
 
 
     //the boundary # that the asset will reach max performance at level 1 (on its own per figure), neutralProfit Factor - at what performance 0 - 1 will it be profit = 0
-    val (boundaryPop, boundaryIncomeLevel, boundaryPaxStats, neutralProfitFactor) = asset.assetType match {
+    val (boundaryPop, boundaryIncomeLevel, boundaryPaxStats, neutralProfitFactor) = asset.assetType match { // Lowered all boundyryIncomeLevels by 5
       case com.patson.model.AirportAssetType.SUBWAY =>
-        (5000000, 35, PassengerStats(400000, 200000, 200000, 150000, 150000), 0.8)
+        (5000000, 30, PassengerStats(400000, 200000, 200000, 150000, 150000), 0.8)
       case com.patson.model.AirportAssetType.CITY_TRANSIT =>
-        (5000000, 35, PassengerStats(100000, 200000, 200000, 50000, 50000), 0.8)
+        (3000000, 30, PassengerStats(100000, 200000, 200000, 50000, 50000), 0.8) // Changed from 5m to 3m population
       case com.patson.model.AirportAssetType.CONVENTION_CENTER =>
-        (4000000, 40, PassengerStats(200000, 200000, 200000, 400000, 400000), 0.5)
+        (4000000, 35, PassengerStats(200000, 200000, 200000, 400000, 400000), 0.5)
       case com.patson.model.AirportAssetType.SOLAR_POWER_PLANT =>
-        (200000, 40, PassengerStats(20000, 20000, 20000, 5000, 5000), 0.8)
+        (200000, 35, PassengerStats(20000, 20000, 20000, 5000, 5000), 0.8)
       case com.patson.model.AirportAssetType.TRAVEL_AGENCY =>
-        (500000, 40, PassengerStats(0, 0, 0, 10000, 10000), 0.4)
+        (500000, 35, PassengerStats(0, 0, 0, 10000, 10000), 0.4)
       case com.patson.model.AirportAssetType.GAME_ARCADE =>
-        (150000, 40, PassengerStats(10000, 5000, 5000, 5000, 5000), 0.4)
+        (150000, 35, PassengerStats(10000, 5000, 5000, 5000, 5000), 0.4)
       case com.patson.model.AirportAssetType.RESTAURANT =>
-        (50000, 40, PassengerStats(5000, 2000, 2000, 2000, 2000), 0.6)
+        (50000, 35, PassengerStats(5000, 2000, 2000, 2000, 2000), 0.6)
 
       case _ => println(s"Unknown generic asset type for performance computation!! ${asset.assetType}")
-        (4000000, 40, PassengerStats(150000, 100000, 100000, 200000, 200000), 0.5)
+        (4000000, 35, PassengerStats(150000, 100000, 100000, 200000, 200000), 0.5)
     }
 
     var performanceFactor =
