@@ -242,15 +242,11 @@ function updateAirlineDetails() {
 
             $('#officeCanvas .airlineName').text(airline.name)
             cancelAirlineRename()
-            if (isPremium()) {
-                if (airline.renameCooldown) {
+            if (airline.renameCooldown) {
                     disableButton($('#officeCanvas .airlineNameDisplaySpan .editButton'), "Cannot rename yet. Cooldown: " + toReadableDuration(airline.renameCooldown))
                 } else {
                     enableButton($('#officeCanvas .airlineNameDisplaySpan .editButton'))
-                }
-            } else {
-                disableButton($('#officeCanvas .airlineNameDisplaySpan .editButton'), "Airline rename is only available to Patreon members")
-            }
+            	}
 
 	    	$('#airlineCode').text(airline.airlineCode)
 	    	$('#airlineCodeInput').val(airline.airlineCode)
