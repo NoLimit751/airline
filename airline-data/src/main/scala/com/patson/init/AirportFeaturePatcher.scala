@@ -129,6 +129,7 @@ object AirportFeaturePatcher extends App {
       "MRU" -> 20, //Mauritius
       "MHD" -> 20, //Mashhad (Iran)
       "CZM" -> 20, //Cozumel
+      "SKG" -> 20, //Thessaloniki (Greece)
       "KIN" -> 19, //Kingston (Jamaica)
       "BWN" -> 19, //Brunei
       "MFM" -> 19, //Macau
@@ -158,11 +159,13 @@ object AirportFeaturePatcher extends App {
       "IGU" -> 17, //Foz Do Iguaçu
       "SCL" -> 17, //Santiago
       "NBO" -> 17, //Nairobi
+      "LCA" -> 17, //Larnaca (Cyprus)
       "LIH" -> 16, //Lihue (Hawaii)
       "CEB" -> 16, //Cebu
       "HAK" -> 16, //Haikou
       "ITO" -> 15, //Hilo (Hawaii)
       "WAW" -> 15, //Warsaw
+      "SPU" -> 15, //Split (Croatia)
       "SAW" -> 15, //Istanbul Sabiha Gökçen
       "KWL" -> 15, //Guilin (China)
       "DRW" -> 14, //Darwin (Australia)
@@ -176,10 +179,21 @@ object AirportFeaturePatcher extends App {
       "AUA" -> 11, //Aruba
       "BGI" -> 11, //Barbados
       "IBZ" -> 11, //Ibiza
+      "ZTH" -> 11, //Zakynthos (Greece)
+      "RHO" -> 10, //Rodes (Greece)
+      "CFU" -> 10, //Corfu (Greece)
+      "PVK" -> 10, //Preveza/Lefkada (Greece)
+      "BJV" -> 10, //Bodrum (Turkey)
       "TAO" -> 10, //Qingdao (China)
       "NOU" -> 10, //Nouméa
       "YZF" -> 10, //Yellowknife (Canada)
-      "CUR" -> 10 //Curacao
+      "ZAD" -> 10, //Zadar (Croatia)
+      "PUY" -> 10, //Pula (Croatia)
+      "TIV" -> 10, //Tivat (Monetenegro)
+      "CUR" -> 10, //Curacao
+      "BOJ" -> 8, //Burgas (Bulgaria)
+      "VAR" -> 8, //Varna (Bulgaria)
+      "OHD" -> 5 //Ohrid (North Macedonia)
     ),
     FINANCIAL_HUB -> Map[String, Int](
       "LHR" -> 80, //London Heathrow
@@ -318,6 +332,7 @@ object AirportFeaturePatcher extends App {
       "KIX",
       "SVO", //Russia
       "LED",
+      "DME",
       "FCO", //Italy
       "MXP",
       "FRA", //Germany
