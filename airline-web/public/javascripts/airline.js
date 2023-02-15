@@ -3023,7 +3023,7 @@ function negotiationAnimation(savedLink, callback, callbackParam) {
         if (index == negotiationResult.sessions.length) {
             clearInterval(animationInterval);
         }
-	}, 750)
+	}, 50)
 
 
 	if (callback) {
