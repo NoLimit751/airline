@@ -535,7 +535,13 @@ object AirlineSimulation {
       if (loan.lastPaymentCycle >= paymentCycle) { //something wrong with sim, avoid duplicated payment
         println(s"Skipping double payment on $loan")
       } else {
-        val weeklyPayment = loan.weeklyPayment
+        val weeklyPayment = {
+          if (paymentCycle <= loan.creationCycle) {
+            0
+          } else {
+            loan.weeklyPayment
+          }
+        }
         val weeklyInterest = loan.weeklyInterest(paymentCycle)
         totalLoanPayment = totalLoanPayment + weeklyPayment
         totalLoanInterest = totalLoanInterest + weeklyInterest

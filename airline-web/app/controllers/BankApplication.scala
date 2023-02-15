@@ -51,9 +51,10 @@ class BankApplication @Inject()(cc: ControllerComponents) extends AbstractContro
       } else {
         Bank.getLoanOptions(requestedAmount).find( loanOption => loanOption.term == requestedTerm) match {
           case Some(loan) =>
-            BankSource.saveLoan(loan.copy(airlineId = request.user.id, creationCycle = currentCycle))
+            val gracePeriod = (loan.term/52 * 5.2).toInt
+            BankSource.saveLoan(loan.copy(airlineId = request.user.id, creationCycle = currentCycle+gracePeriod))
             AirlineSource.adjustAirlineBalance(request.user.id, loan.principal)
-            Ok(Json.toJson(loan)(new LoanWrites(currentCycle)))
+            Ok(Json.toJson(loan)(new LoanWrites(currentCycle+gracePeriod)))
           case None => BadRequest("Bad loan term [" + requestedTerm + "]")
         }
       }

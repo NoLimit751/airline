@@ -9,12 +9,37 @@ case class Loan(airlineId : Int, principal : Long, annualRate : BigDecimal, crea
   val interest = weeklyPayment * term - principal
   val total = principal + interest
 
-  val remainingTerm = (currentCycle : Int) => creationCycle + term - currentCycle
-  val remainingPayment : (Int => Long)= (currentCycle : Int) => (total - (term - remainingTerm(currentCycle)) * weeklyPayment).toLong
-//  val remainingInterest = (currentCycle : Int) => interestWeeklyPayment(currentCycle) * remainingTerm
+  val remainingTerm = (currentCycle : Int) => {
+    if (currentCycle <= creationCycle) {
+      term
+    } else {
+      (creationCycle + term - currentCycle)
+    }
+  }
+
+  val remainingPayment : (Int => Long)= (currentCycle : Int) => {
+    if (currentCycle <= creationCycle) {
+      total
+    } else {
+      ((total - (term - remainingTerm(currentCycle)) * weeklyPayment).toLong)
+    }
+  }
+  
+  val remainingInterest = (currentCycle : Int) => interestWeeklyPayment(currentCycle) * remainingTerm {
+    if (currentCycle <= creationCycle) {
+      interest
+    } else {
+      (interestWeeklyPayment(currentCycle) * remainingTerm)
+    }
+  }
+  
   val remainingPrincipal : (Int => Long) = (currentCycle : Int) => {
-    val paidMonth = currentCycle - creationCycle
-    (principal * Math.pow(1 + weeklyRate, paidMonth) - weeklyPayment * (Math.pow(1 + weeklyRate, paidMonth) - 1) / weeklyRate).toLong
+    if (currentCycle <= creationCycle) {
+      principal
+    } else {
+      val paidMonth = currentCycle - creationCycle
+      (principal * Math.pow(1 + weeklyRate, paidMonth) - weeklyPayment * (Math.pow(1 + weeklyRate, paidMonth) - 1) / weeklyRate).toLong
+    }
   }
 
   val weeklyInterest : (Int => Long) = (currentCycle : Int) => {
