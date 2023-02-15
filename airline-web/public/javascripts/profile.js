@@ -37,7 +37,7 @@ function createProfileDiv(profile, profileId) {
     }
     $('<li class="dot"></li>').appendTo($list).text(profile.reputation + " reputation")
     if (profile.loan) {
-        $('<li class="dot"></li>').appendTo($list).text("Outstanding loan of $" + commaSeparateNumber(profile.loan.remainingAmount) + " weekly payment of $" + commaSeparateNumber(profile.loan.weeklyPayment))
+        $('<li class="dot"></li>').appendTo($list).text("Outstanding loan of $" + commaSeparateNumber(profile.loan.remainingAmount) + " with a weekly payment of $" + commaSeparateNumber(profile.loan.weeklyPayment))
     }
     $profileDiv.append($list)
 
