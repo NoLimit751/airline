@@ -821,6 +821,7 @@ package object controllers {
       "remainingTerm" -> JsNumber(loan.remainingTerm(currentCycle)),
       "weeklyPayment" -> JsNumber(loan.weeklyPayment),
       "creationCycle" -> JsNumber(loan.creationCycle),
+      "gracePeriod" -> JsNumber(loan.creationCycle-currentCycle),
       "loanTerm" ->  JsNumber(loan.term),
       "id" -> JsNumber(loan.id)))
   }

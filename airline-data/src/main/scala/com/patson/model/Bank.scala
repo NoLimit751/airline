@@ -10,10 +10,10 @@ object Bank {
   //val LOAN_TERMS = Map(52 -> 0.25 , 2 * 52 -> 0.28, 3 *52 -> 0.32, 5 * 52 -> 0.35)
   val WEEKS_PER_YEAR = 52
   val LOAN_TERMS = List[Int](WEEKS_PER_YEAR, 2 * WEEKS_PER_YEAR, 3 * WEEKS_PER_YEAR, 5 * WEEKS_PER_YEAR, 10 * WEEKS_PER_YEAR, 15 * WEEKS_PER_YEAR, 20 * WEEKS_PER_YEAR, 30 * WEEKS_PER_YEAR)
-  val MAX_LOANS = 10
+  val MAX_LOANS = 20
   val MIN_LOAN_AMOUNT = 10000
   val MAX_LOAN_AMOUNT = 100000000000L //100 billion as max, changed from 500 million
-  val LOAN_REAPPLY_MIN_INTERVAL = 0 //it was 13 (only every quarter), changed it do 0 (if you can afford it, take a loan whenever you want)
+  //val LOAN_REAPPLY_MIN_INTERVAL = 13 // It's disabled, does not do anything
   def getMaxLoan(airlineId : Int) : LoanReply = {
     val existingLoans = BankSource.loadLoansByAirline(airlineId)
     
@@ -23,12 +23,13 @@ object Bank {
     
     val currentCycle = CycleSource.loadCycle()
     
-    existingLoans.sortBy(_.creationCycle).lastOption.foreach { previousLoan =>//check the last loan if there's one
+    // Loan reapply min interval is disabled
+    /*existingLoans.sortBy(_.creationCycle).lastOption.foreach { previousLoan =>//check the last loan if there's one
       val weeksFromLastLoan = currentCycle - previousLoan.creationCycle
       if (weeksFromLastLoan < LOAN_REAPPLY_MIN_INTERVAL) {
         return LoanReply(0, Some("Can only apply next loan in " + (LOAN_REAPPLY_MIN_INTERVAL - weeksFromLastLoan) + " weeks"))
       }
-    }
+    }*/
     
     //base on previous month
     val previousMonthCycle = currentCycle - currentCycle % 4 - 1
@@ -74,7 +75,8 @@ object Bank {
         val years = term / WEEKS_PER_YEAR
         val baseAnnualRate = annualRate
         val annualRateByTerm = baseAnnualRate + (years - 1) * rateIncrementPerYear
-        Loan(airlineId = 0, principal = principal, annualRate = annualRateByTerm, creationCycle = currentCycle, lastPaymentCycle = currentCycle, term = term)
+        val gracePeriod = (years * 5.2).toInt
+        Loan(airlineId = 0, principal = principal, annualRate = annualRateByTerm, creationCycle = currentCycle + gracePeriod, lastPaymentCycle = currentCycle + gracePeriod, term = term)
       }
   }
   
