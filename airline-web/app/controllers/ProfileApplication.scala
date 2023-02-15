@@ -31,8 +31,8 @@ class ProfileApplication @Inject()(cc: ControllerComponents) extends AbstractCon
     }
   }
 
-  val BASE_CAPITAL = 40000000
-  val BONUS_PER_DIFFICULTY_POINT = 1000000
+  val BASE_CAPITAL = 500000000 // Changed to 500m from 40m
+  val BONUS_PER_DIFFICULTY_POINT = 10000000
 
   def generateAirplanes(value : Int, capacityRange : scala.collection.immutable.Range, homeAirport : Airport, condition : Double, airline : Airline, random : Random) : List[Airplane] =  {
     val eligibleModels = allAirplaneModels.filter(model => capacityRange.contains(model.capacity))
@@ -68,11 +68,25 @@ class ProfileApplication @Inject()(cc: ControllerComponents) extends AbstractCon
   def generateProfiles(airline : Airline, airport : Airport) : List[Profile] = {
     val difficulty = airport.rating.overallDifficulty
     val capital = BASE_CAPITAL + difficulty * BONUS_PER_DIFFICULTY_POINT
+    val random = new Random(airport.id)
 
     val profiles = ListBuffer[Profile]()
-    val cashProfile = Profile(name = "Entrepreneurial spirit", description = "You have sold all your assets to create this new airline of your dream! Plan carefully but make bold moves to thrive in this brave new world. Recommended for new players.", cash = capital, airport = airport)
+    
+    val customProfile = Profile(
+      name = "New beginning",
+      description = "You have managed to secure financing for your new airline, congratulations! Even though the interest rate for your first loan is really low, that money is not free. You will stiil need to work hard to make you airline profitable as soon as possible so you can pay it back. Good luck!",
+      cash = capital.toInt,
+      airport = airport,
+      loan = Some(Bank.getLoanOptions((capital).toInt, 0.0055, CycleSource.loadCycle()).last.copy(airlineId = airline.id)))
+    profiles.append(customProfile)
+
+    val cashProfile = Profile(
+      name = "Entrepreneurial spirit",
+      description = "You have sold all your assets to create this new airline of your dream! Plan carefully but make bold moves to thrive in this brave new world. Recommended for new players.",
+      cash = capital,
+      airport = airport)
     profiles.append(cashProfile)
-    val random = new Random(airport.id)
+    
     val smallAirplanes = generateAirplanes(capital, (15 to 50), airport, 90, airline, random)
     if (!smallAirplanes.isEmpty) {
       val smallAirplaneProfile = Profile(
@@ -83,8 +97,6 @@ class ProfileApplication @Inject()(cc: ControllerComponents) extends AbstractCon
         reputation = 10,
         airplanes = smallAirplanes,
         loan = Some(Bank.getLoanOptions((capital * 1).toInt, BASE_INTEREST_RATE, CycleSource.loadCycle()).last.copy(airlineId = airline.id)))
-
-
       profiles.append(smallAirplaneProfile)
     }
 
