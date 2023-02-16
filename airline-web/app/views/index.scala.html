@@ -1028,7 +1028,8 @@
 							<div style="width: 100%; height: 100%; overflow:auto;">
 								<div class="table data" style="height: 20px; width: 100%; min-width: 600px;">
 									<div class="table-header" id="linksTableSortHeader">
-										<div class="cell clickable selected" style="width: 16%" data-sort-property="fromAirportCode" data-sort-order="descending" onclick="toggleLinksTableSortOrder($(this))">From Airport</div>
+										<div class="cell clickable" style="width: 6%" data-sort-property="flightCode" data-sort-order="ascending" onclick="toggleLinksTableSortOrder($(this))">Flight Code</div>
+										<div class="cell clickable" style="width: 16%" data-sort-property="fromAirportCode" data-sort-order="descending" onclick="toggleLinksTableSortOrder($(this))">From Airport</div>
 										<div class="cell clickable" style="width: 0%" data-sort-property="lastUpdate" data-sort-order="ascending" id="hiddenLinkSortBy"></div> <!--hidden column for last update (cannot be first otherwise the left round corner would not work -->
 										<div class="cell clickable" style="width: 16%" data-sort-property="toAirportCode" data-sort-order="descending" onclick="toggleLinksTableSortOrder($(this))">To Airport</div>
 										<div class="cell clickable" style="width: 15%" data-sort-property="model" data-sort-order="ascending" onclick="toggleLinksTableSortOrder($(this))">Model</div>
@@ -1044,6 +1045,7 @@
 								<div style="height: calc(100% - 40px); width: 100%; overflow-y:auto; min-width: 600px;">
 									<div class="table data" id="linksTable" style="max-height: 100%; width: 100%">
 										<div class="table-header">
+											<div class="cell" style="width: 6%; border-bottom: none;"></div>
 											<div class="cell" style="width: 16%; border-bottom: none;"></div>
 											<div class="cell" style="width: 16%; border-bottom: none;"></div>
 											<div class="cell" style="width: 15%; border-bottom: none;"></div>
@@ -1569,8 +1571,8 @@
 						<div style="height: 95% ; width : 98%; float: left;"  class="section">
 							<div class="table" style="width: 30%; margin-bottom: 10px;">
 								<div class="table-header">
-									<div class="cell detailsSelection clickable selected" data-type="market" onclick="selectAirplaneTab($(this))" style="border-radius: 5px 0 0 5px">Market</div>
-									<div class="cell detailsSelection clickable" data-type="hangar" onclick="selectAirplaneTab($(this));" style="border-radius: 0 5px 5px 0">Hangar</div>
+									<div class="cell detailsSelection clickable selected" data-type="hangar" onclick="selectAirplaneTab($(this))" style="border-radius: 5px 0 0 5px">Hangar</div>
+									<div class="cell detailsSelection clickable" data-type="market" onclick="selectAirplaneTab($(this));" style="border-radius: 0 5px 5px 0">Market</div>
 								</div>
 							</div>
 
