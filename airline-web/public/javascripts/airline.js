@@ -913,8 +913,6 @@ function planLink(fromAirport, toAirport, isRefresh) {
             loadPlanLink()
         }
 	}
-	
-	
 }
 
 var planLinkInfo = null
@@ -1791,6 +1789,7 @@ function updateLinksTable(sortProperty, sortOrder) {
 	$.each(loadedLinks, function(index, link) {
 		var row = $("<div class='table-row clickable' onclick='selectLinkFromTable($(this), " + link.id + ")'></div>")
 		
+		row.append("<div class='cell' align='center'>" + link.flightCode + "</div>")
 		row.append("<div class='cell'>" + getCountryFlagImg(link.fromCountryCode) + getAirportText(link.fromAirportCity, link.fromAirportCode) + "</div>")
 		row.append("<div class='cell'>" + getCountryFlagImg(link.toCountryCode) + getAirportText(link.toAirportCity, link.toAirportCode) + "</div>")
 		row.append("<div class='cell'>" + link.model + "</div>")
@@ -3060,4 +3059,5 @@ function addAirlineTooltip($target, airlineId, slogan, airlineName) {
     }
     addTooltipHtml($target, $airlineTooltip, {'top' : '100%'})
 }
+
 

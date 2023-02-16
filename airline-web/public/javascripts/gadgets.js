@@ -506,7 +506,7 @@ function padBefore(str, padChar, max) {
 
 function getAirportText(city, airportCode) {
 	if (city) {
-		return city + "(" + airportCode + ")"
+		return city + " (" + airportCode + ")"
 	} else {
 		return airportCode
 	}
