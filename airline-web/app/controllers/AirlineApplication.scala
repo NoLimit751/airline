@@ -285,10 +285,11 @@ class AirlineApplication @Inject()(cc: ControllerComponents) extends AbstractCon
             }
           }
         }
-        //it should first has link to it
-        if (LinkSource.loadFlightLinksByAirlineId(airline.id).find(link => link.from.id == airport.id || link.to.id == airport.id).isEmpty) {
+        
+        // Disabled the need that it should first have a link to it
+        /*if (LinkSource.loadFlightLinksByAirlineId(airline.id).find(link => link.from.id == airport.id || link.to.id == airport.id).isEmpty) {
           return Some("No active flight route operated by your airline flying to this city yet")
-        }
+        }*/
 
         //check title
         targetBase.allowAirline(airline) match {
