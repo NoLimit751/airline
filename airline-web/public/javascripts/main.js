@@ -418,7 +418,10 @@ function refreshPanels(airlineId) {
 	    	}
 	    	if ($("#linksCanvas").is(":visible")) {
 	    		loadLinksTable()
-	    	}
+			}
+			if ($("#linksPlanCanvas").is(":visible")) {
+				loadLinksPlanTable()
+			}
 	    },
 	    error: function(jqXHR, textStatus, errorThrown) {
 	            console.log(JSON.stringify(jqXHR));
@@ -433,7 +436,7 @@ var incrementPerInterval = totalmillisecPerWeek / (15 * 60 * 1000) * refreshInte
 var durationTillNextTick
 var hasTickEstimation = false
 var refreshIntervalTimer
-var days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+var days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
 
 function updateTime(cycle, fraction, cycleDurationEstimation) {
@@ -456,7 +459,10 @@ function updateTime(cycle, fraction, cycleDurationEstimation) {
 			    durationTillNextTick -= refreshInterval
 			}
 			var date = new Date(currentTime)
-			$(".currentTime").text("(" + days[date.getDay()] + ") " + padBefore(date.getMonth() + 1, "0", 2) + '/' + padBefore(date.getDate(), "0", 2) +  " " + padBefore(date.getHours(), "0", 2) + ":00")
+			var year = date.getFullYear()-1970
+			var month = date.getMonth()
+			var day = date.getDate()
+			$(".currentTime").text(cycle + " - " + padBefore(year + 1, "0", 3) + "." + padBefore(month + 1, "0", 2) + '.' + padBefore(day, "0", 2) + ". " + days[date.getDay()] + " " + padBefore(date.getHours(), "0", 2) + ":00")
 
 			if (hasTickEstimation) {
 			    var minutesLeft = Math.round(durationTillNextTick / 1000 / 60)
