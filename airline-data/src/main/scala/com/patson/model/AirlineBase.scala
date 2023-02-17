@@ -83,9 +83,11 @@ case class AirlineBase(airline : Airline, airport : Airport, countryCode : Strin
     * if not allowed, return LEFT[the title required]
     */
   lazy val allowAirline : Airline => Either[Title.Value, Title.Value]= (airline : Airline) => {
-
+    
+    val airlineCountryCode = CountrySource.getAirlineCountryCode(airline.id)
+    val countryMutualRelationship = CountrySource.getCountryMutualRelationship(airlineCountryCode, airport.countryCode)
     val requiredTitle =
-      if (airport.isGateway()) {
+      if (airport.isGateway() || countryMutualRelationship>=4) { //If allied or same country (relationship >=4) build wherever you want, not just in gateways
         Title.ESTABLISHED_AIRLINE
       } else {
         Title.PRIVILEGED_AIRLINE

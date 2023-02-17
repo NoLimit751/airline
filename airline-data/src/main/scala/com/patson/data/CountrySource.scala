@@ -305,6 +305,23 @@ object CountrySource {
     }.toMap
   }
   
+  def getAirlineCountryCode(airlineId: Int): String = {
+    val connection = Meta.getConnection()
+    val statement = connection.prepareStatement("SELECT country_code FROM " + AIRLINE_INFO_TABLE + " WHERE airline = ?")
+    try {
+      statement.setInt(1, airlineId)
+      val result = statement.executeQuery();
+      if (result.next()) {
+        result.getString("country_code")
+      } else {
+        throw new RuntimeException("No country code found for airline ID " + airlineId)
+      }
+    } finally {
+      statement.close()
+      connection.close()
+    }
+  }
+
   def saveMarketShares(marketShares : List[CountryMarketShare]) = {
      val connection = Meta.getConnection()
      try {  

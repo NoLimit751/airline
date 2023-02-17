@@ -71,6 +71,8 @@ object CountryAirlineTitle {
       //no top country title, check lower ones
       val title : Title.Value = {
         val relationship = AirlineCountryRelationship.getAirlineCountryRelationship(countryCode, airline).relationship
+        val airlineCountryCode = CountrySource.getAirlineCountryCode(airline.id)
+        val countryMutualRelationship = CountrySource.getCountryMutualRelationship(airlineCountryCode, countryCode)
         if (relationship < APPROVED_AIRLINE_RELATIONSHIP_THRESHOLD) {
           Title.NONE
         } else if (relationship < ESTABLISHED_AIRLINE_RELATIONSHIP_THRESHOLD) {
@@ -78,8 +80,8 @@ object CountryAirlineTitle {
         } else {
           val links = LinkSource.loadLinksByCriteria(List(("airline", airline.id), ("to_country", countryCode))) ++
             LinkSource.loadLinksByCriteria(List(("airline", airline.id), ("from_country", countryCode)))
-          if (links.isEmpty) {
-            Title.APPROVED_AIRLINE
+          if (links.isEmpty && countryMutualRelationship<4) { // Allied countries (>=4 relationship) get status even without a link, made this adjustment to simulate common travel areas 
+              Title.APPROVED_AIRLINE           
           } else {
             if (relationship < PRIVILEGED_AIRLINE_RELATIONSHIP_THRESHOLD) {
               Title.ESTABLISHED_AIRLINE
@@ -116,9 +118,9 @@ object CountryAirlineTitle {
     case PARTNERED_AIRLINE =>
       List(s"Airline market share reach top ${CountrySimulation.computePartneredAirlineCount(country)} of all airlines in ${country.name} excluding the national airline")
     case PRIVILEGED_AIRLINE =>
-      List(s"Airline reaches relationship $PRIVILEGED_AIRLINE_RELATIONSHIP_THRESHOLD with ${country.name}", s"Flight route established with ${country.name}")
+      List(s"Airline reaches relationship $PRIVILEGED_AIRLINE_RELATIONSHIP_THRESHOLD with ${country.name}", s"Flight route established with ${country.name} (allied countries excluded from this requirement)")
     case ESTABLISHED_AIRLINE =>
-      List(s"Airline reaches relationship $ESTABLISHED_AIRLINE_RELATIONSHIP_THRESHOLD with ${country.name}", s"Flight route established with ${country.name}")
+      List(s"Airline reaches relationship $ESTABLISHED_AIRLINE_RELATIONSHIP_THRESHOLD with ${country.name}", s"Flight route established with ${country.name} (allied countries excluded from this requirement)")
     case APPROVED_AIRLINE =>
       List(s"Airline reaches relationship $APPROVED_AIRLINE_RELATIONSHIP_THRESHOLD with ${country.name}")
     case NONE =>
@@ -129,18 +131,18 @@ object CountryAirlineTitle {
     case NATIONAL_AIRLINE =>
       List(s"Loyalty +${CountryAirlineTitle(country, Airline.fromId(0), NATIONAL_AIRLINE).loyaltyBonus} on all airports in ${country.name}",
         s"Relationship +${Title.relationshipBonus(NATIONAL_AIRLINE)} with ${country.name}",
-        s"Allow building airport bases in any airports in ${country.name}"
+        s"Allow building airport bases in any airport in ${country.name}"
       )
     case PARTNERED_AIRLINE =>
       List(s"Loyalty +${CountryAirlineTitle(country, Airline.fromId(0), PARTNERED_AIRLINE).loyaltyBonus} on all airports in ${country.name}",
         s"Relationship +${Title.relationshipBonus(PARTNERED_AIRLINE)} with ${country.name}",
-        s"Allow building airport bases in any airports in ${country.name}"
+        s"Allow building airport bases in any airport in ${country.name}"
       )
     case PRIVILEGED_AIRLINE =>
-      List(s"Allow building airport bases in any airports in ${country.name}"
+      List(s"Allow building airport bases in any airport in ${country.name}"
       )
     case ESTABLISHED_AIRLINE =>
-      List(s"Allow building airport bases in only Gateway airports in ${country.name}"
+      List(s"Allow building airport bases only in Gateway airports in ${country.name} (allied countries excluded from this limit and can build in any airport)"
       )
     case APPROVED_AIRLINE =>
       List()
