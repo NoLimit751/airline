@@ -148,9 +148,9 @@ object PassengerSimulation {
 //       val routesFuture = findAllRoutes(requiredRoutes.toMap, availableLinks, activeAirportIds)
 //       val allRoutesMap = Await.result(routesFuture, Duration.Inf)
        val iterationCount =
-        if (consumptionCycleCount < 3) 4
-        else if (consumptionCycleCount < 6) 5
-        else 6
+        if (consumptionCycleCount < 3) 5
+        else if (consumptionCycleCount < 6) 6
+        else 7
        val allRoutesMap = findAllRoutes(requiredRoutes.toMap, availableLinks, activeAirportIds, PassengerSimulation.countryOpenness, establishedAllianceIdByAirlineId, Some(externalCostModifier), iterationCount)
 
        //start consuming routes
