@@ -13,7 +13,7 @@ object CountryMutualRelationshipGenerator extends App {
     Affiliation("WestBalk", 4, List( // Western Balkans, alliance level (4)
       "BA", "RS", "ME", "XK", "MK", "AL"
     )),
-    Affiliation("ECAA", 3, List( // European common aviation market (plus I added Israel and Greenland), friendly level (3)
+    Affiliation("ECAA", 3, List( // European common aviation market (plus I added Israel and Greenland), close level (3)
       "BE", "GR", "LT", "PT", "BG", "ES", "LU", "RO", "CZ", "FR", "HU", "SI", "DK", "HR", "MT", "SK", "DE", "IT", "NL", "FI", "EE", "CY", "AT", "SE", "IE", "LV", "PL", "GB", "GI", "NO", "GL", "IS", "CH", "BA", "RS", "ME", "XK", "MK", "AL", "MD", "UA", "GE", "IL"
     )),
     Affiliation("TR+ECAA", 2, List( //Turkey with ECAA, friendly level(2)
@@ -25,7 +25,7 @@ object CountryMutualRelationshipGenerator extends App {
     Affiliation("RUBY", 5, List( // Russia and Belarus confederation, one country level (5)
       "RU", "BY"
     )),
-    Affiliation("EAEU", 3, List( // Euroasian economic union, frendly level (3)
+    Affiliation("EAEU", 3, List( // Euroasian economic union, close level (3)
       "RU", "BY", "AM", "KZ", "KG", "UZ"
     )),
     Affiliation("TR+EAEU", 1, List( //Turkey with EAEU, warm level(1)
@@ -34,7 +34,7 @@ object CountryMutualRelationshipGenerator extends App {
     Affiliation("TR+AZ", 4, List( //Turkey and AZ, alliance level (4)
       "TR", "AZ"
     )),
-    Affiliation("Turkic", 4, List( //Turkic states, frendly level (3)
+    Affiliation("Turkic", 4, List( //Turkic states, close level (3)
       "TR", "AZ", "KZ", "UZ", "KG", "TM"
     )),
     Affiliation("OneChina", 4, List( // All chinese territories, alliance level (4)
@@ -46,10 +46,10 @@ object CountryMutualRelationshipGenerator extends App {
     Affiliation("UKUSA", 4, List( // UKUSA agreement, alliance level (4)
       "US", "CA", "GB", "AU", "NZ"
     )),
-    Affiliation("SouthPac", 3, List( // Invented South Pacific common aviation market, friendly level (3)
+    Affiliation("SouthPac", 3, List( // Invented South Pacific common aviation market, close level (3)
       "AU", "NZ", "NC", "FJ", "VU", "SB", "PG", "TO", "NU", "WS", "AS", "CK", "PF", "WF", "TV", "KI", "NR", "FM", "PW", "MP", "GU", "MH"
     )),
-    Affiliation("ASEAN", 3, List( // Invented ASEAN common aviation market, friendly level (3)
+    Affiliation("ASEAN", 3, List( // Invented ASEAN common aviation market, close level (3)
       "PH", "ID", "TL", "SG", "MY", "VN", "LA", "KH", "TH", "MM"
     )),
     Affiliation("FrenchTerritories", 5, List( // French overseas territories, same country level (5)
@@ -64,11 +64,23 @@ object CountryMutualRelationshipGenerator extends App {
     Affiliation("USTerritories", 5, List( // US overseas territories, same country level (5)
       "US", "AS", "GU", "MP", "PR", "VI"
     )),
-    Affiliation("Caribbean", 3, List( // Invented Caribbean common aviation market, friendly level (3)
+    Affiliation("Caribbean", 3, List( // Invented Caribbean common aviation market, close level (3)
       "BM", "BS", "CU", "KY", "JM", "TC", "HT", "DO", "PR", "VI", "VG", "SX", "KN", "AG", "GP", "MS", "BL", "BQ", "DM", "MQ", "LC", "VC", "GD", "TT", "BB", "CW"   
     )),
-    Affiliation("NAFTA", 4, List( // NAFTA, alliance level (4)
+    Affiliation("NAFTA", 3, List( // NAFTA, close level (3)
       "US", "CA", "MX"
+    )),
+    Affiliation("Mercosur", 3, List( // Mercosur, close level (3)
+      "AR", "BR", "PY", "UY", "VE", "BO", "CL", "CO", "EC", "GY", "PE", "SR"
+    )),
+    Affiliation("CentralAmericaMercosur", 2, List( // Central America and Mexico with Mercosur, warm level (2)
+      "AR", "BR", "PY", "UY", "VE", "BO", "CL", "CO", "EC", "GY", "PE", "SR", "MX", "BZ", "CR", "SV", "GT", "HN", "NI", "PA"
+    )),
+    Affiliation("Americas", 1, List( // Americas, friendly level (1)
+      "AR", "BR", "PY", "UY", "VE", "BO", "CL", "CO", "EC", "GY", "PE", "SR", "MX", "US", "CA", "BZ", "CR", "SV", "GT", "HN", "NI", "PA", "BM", "BS", "CU", "KY", "JM", "TC", "HT", "DO", "PR", "VI", "VG", "SX", "KN", "AG", "GP", "MS", "BL", "BQ", "DM", "MQ", "LC", "VC", "GD", "TT", "BB", "CW"
+    )),
+    Affiliation("BRICS", 3, List( // BRICS, close level (3)
+      "BR", "RU", "IN", "CR", "SA"
     ))
   )
 
