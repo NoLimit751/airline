@@ -213,9 +213,12 @@ object NegotiationUtil {
 
     val airport = newLink.to
     val country = CountryCache.getCountry(airport.countryCode).get
+    val airlineCountryCode = CountrySource.getAirlineCountryCode(airline.id)
+    val countryMutualRelationship = CountrySource.getCountryMutualRelationship(airlineCountryCode, airport.countryCode)
     airline.getCountryCode().foreach { homeCountryCode =>
-      if (homeCountryCode != airport.countryCode) { //closed country are anti foreign airlines
+      if (homeCountryCode != airport.countryCode && countryMutualRelationship<4) { //closed country are anti foreign airlines. If countries are allied, then it's not treated as foreign airline
         var baseForeignAirline = (14 - country.openness) * 0.5
+      
         if (existingLinkOption.isDefined) { //cheaper if it's already established
           baseForeignAirline = baseForeignAirline * 0.5
         }
@@ -243,7 +246,8 @@ object NegotiationUtil {
         val airport = newLink.to
         CountryCache.getCountry(airport.countryCode).foreach { country =>
           val flightCategory = FlightType.getCategory(newLink.flightType)
-          if (flightCategory != FlightCategory.DOMESTIC) {
+          val countryMutualRelationship = CountrySource.getCountryMutualRelationship(country.countryCode, airport.countryCode)
+          if (flightCategory != FlightCategory.DOMESTIC && countryMutualRelationship<4) { //If allied, you can fly to non gateway
             airport.getFeatures().find(_.featureType == AirportFeatureType.GATEWAY_AIRPORT) match {
               case Some(_) => //OK
               case None =>
