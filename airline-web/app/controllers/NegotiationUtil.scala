@@ -565,7 +565,7 @@ case class NegotiationResult(threshold : Double, result : Double) {
   val isGreatSuccess = isSuccessful && result >= NegotiationUtil.GREAT_SUCCESS_THRESHOLD
   println(s"negotiation result: threshold $threshold vs result $result. Great success ? $isGreatSuccess")
 
-  val SESSION_COUNT = 10
+  val SESSION_COUNT = 1 // Used to be 10, shortened it to 1 to get instant negotiation result
   def getNegotiationSessions() : NegotiationSession = {
     //    val BASE_PASSING_SCORE = 100 //make it a more than 0...just for nicer display
     //
