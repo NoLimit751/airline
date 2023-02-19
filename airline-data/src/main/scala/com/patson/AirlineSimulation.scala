@@ -422,10 +422,10 @@ object AirlineSimulation {
       IncomeSource.deleteIncomes(currentCycle - 1, Period.YEARLY)
     }
     
-    //purge old entries, keep 10 entries of each Period
-    IncomeSource.deleteIncomesBefore(currentCycle - 10, Period.WEEKLY);
-    IncomeSource.deleteIncomesBefore(currentCycle - 10 * 4, Period.MONTHLY);
-    IncomeSource.deleteIncomesBefore(currentCycle - 10 * 52, Period.YEARLY);
+    //purge old entries, keep weekly entries for a quarter, keep monthly entries for 2 years, keep yearly entries forever
+    IncomeSource.deleteIncomesBefore(currentCycle - 12, Period.WEEKLY);
+    IncomeSource.deleteIncomesBefore(currentCycle - 52 * 2, Period.MONTHLY);
+    //IncomeSource.deleteIncomesBefore(currentCycle - 10 * 52, Period.YEARLY);
     
     CashFlowSource.saveCashFlows(allCashFlows.toList)
     //purge previous entry of current year/month
@@ -436,10 +436,10 @@ object AirlineSimulation {
       CashFlowSource.deleteCashFlows(currentCycle - 1, Period.YEARLY)
     }
     
-    //purge old entries, keep 10 entries of each Period
-    CashFlowSource.deleteCashFlowsBefore(currentCycle - 10, Period.WEEKLY);
-    CashFlowSource.deleteCashFlowsBefore(currentCycle - 10 * 4, Period.MONTHLY);
-    CashFlowSource.deleteCashFlowsBefore(currentCycle - 10 * 52, Period.YEARLY);
+    //purge old entries, keep weekly entries for a quarter, keep monthly entries for 2 years, keep yearly entries forever
+    CashFlowSource.deleteCashFlowsBefore(currentCycle - 12, Period.WEEKLY);
+    CashFlowSource.deleteCashFlowsBefore(currentCycle - 52 * 2, Period.MONTHLY);
+    //CashFlowSource.deleteCashFlowsBefore(currentCycle - 10 * 52, Period.YEARLY);
     
     //update Oil consumption history
     OilSource.saveOilConsumptionHistory(oilConsumptionEntries.toList)
