@@ -150,6 +150,37 @@ function toLinkClassValueString(linkValues, prefix, suffix) {
     }
 }
 
+function toLinkClassValueStringWithSeats(linkValues) {
+	if (linkValues.hasOwnProperty('economy')) {
+		var economyValue = linkValues.economy
+		var economySeatsTotal = 1 * linkValues.economy
+	} else {
+		var economyValue = '-'
+		var economySeatsTotal = 0
+	}
+	if (linkValues.hasOwnProperty('business')) {
+		var businessValue = linkValues.business
+		var businessSeatsTotal = 2.5 * linkValues.business
+	} else {
+		var businessValue = '-'
+		var businessSeatsTotal = 0
+	}
+	if (linkValues.hasOwnProperty('first')) {
+		var firstValue = linkValues.first
+		var firstSeatsTotal = 9 * linkValues.first
+	} else {
+		var firstValue = '-'
+		var firstSeatsTotal = 0
+	}
+	var totalPax = (economyValue + businessValue + firstValue).toFixed(0)
+	var totalSeats =  (economySeatsTotal + businessSeatsTotal + firstSeatsTotal).toFixed(0)
+
+	if (economyValue >= 1_000 || businessValue >= 1_000 || firstValue >= 1_000) {
+ 	    return commaSeparateNumber(economyValue) + " / " + commaSeparateNumber(businessValue) + " / " + commaSeparateNumber(firstValue) + " (Pax: " + commaSeparateNumber(totalPax) + " / Seats: " + commaSeparateNumber(totalSeats) + ")"
+    } else {
+        return economyValue + " / " + businessValue + " / " + firstValue + " (Pax: " + totalPax + " / Seats: " + totalSeats + ")"
+    }
+}
 function changeColoredElementValue(element, newValue) {
 	var oldValue = element.data('numericValue')
 	if ($.isNumeric(newValue)) {

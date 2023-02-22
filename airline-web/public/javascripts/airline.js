@@ -651,9 +651,9 @@ function refreshLinkDetails(linkId) {
 	    	$("#linkCurrentPrice").text(toLinkClassValueString(link.price, "$"))
 	    	$("#linkDistance").text(link.distance + " km (" + link.flightType + ")")
 	    	$("#linkQuality").html(getGradeStarsImgs(Math.round(link.computedQuality / 10)) + link.computedQuality)
-	    	$("#linkCurrentCapacity").text(toLinkClassValueString(link.capacity))
+	    	$("#linkCurrentCapacity").text(toLinkClassValueStringWithSeats(link.capacity))
 	    	if (link.future) {
-	    	    $("#linkCurrentDetails .future .capacity").text(toLinkClassValueString(link.future.capacity))
+	    	    $("#linkCurrentDetails .future .capacity").text(toLinkClassValueStringWithSeats(link.future.capacity))
 	    	    $("#linkCurrentDetails .future").show()
 	    	} else {
 	    	    $("#linkCurrentDetails .future").hide()
@@ -745,7 +745,7 @@ function refreshLinkDetails(linkId) {
 	    	} else {
 	    		var linkConsumption = linkConsumptions[0]
 	    		$("#linkHistoryPrice").text(toLinkClassValueString(linkConsumption.price, "$"))
-		    	$("#linkHistoryCapacity").text(toLinkClassValueString(linkConsumption.capacity))
+		    	$("#linkHistoryCapacity").text(toLinkClassValueStringWithSeats(linkConsumption.capacity))
 		    	
 		    	var loadFactor = {}
 		    	loadFactor.economy = "-"
@@ -948,7 +948,7 @@ function updatePlanLinkInfo(linkInfo, isRefresh) {
 	//$('#planLinkToAirportExpectedQuality').attr("onclick", "loadLinkExpectedQuality(" + linkInfo.fromAirportId + "," + linkInfo.toAirportId + "," + linkInfo.toAirportId + ")")
 	$('#planLinkFlightCode').text(linkInfo.flightCode)
 	$('#planLinkMutualRelationship').html(getCountryFlagImg(linkInfo.fromCountryCode) + "&nbsp;vs&nbsp;" + getCountryFlagImg(linkInfo.toCountryCode) + getCountryRelationshipDescription(linkInfo.mutualRelationship))
-
+	
 	var relationship = linkInfo.toCountryRelationship
     var relationshipSpan = getAirlineRelationshipDescriptionSpan(relationship.total)
     $("#planLinkToCountryRelationship .total").html(relationshipSpan)
@@ -963,18 +963,18 @@ function updatePlanLinkInfo(linkInfo, isRefresh) {
     updateAirlineTitle(title, $("#planLinkToCountryTitle img.airlineTitleIcon"), $("#planLinkToCountryTitle .airlineTitle"))
 
 	$('#planLinkDistance').text(linkInfo.distance + " km (" + linkInfo.flightType + ')')
-	$('#planLinkDirectDemand').text(toLinkClassValueString(linkInfo.directDemand))
+	$('#planLinkDirectDemand').text(toLinkClassValueStringWithSeats(linkInfo.directDemand))
 
     var $breakdown = $("#planLinkDetails .directDemandBreakdown")
     $breakdown.find(".fromAirport .airportLabel").empty()
     $breakdown.find(".fromAirport .airportLabel").append(getAirportSpan({ "iata" : linkInfo.fromAirportCode, "countryCode" : linkInfo.fromCountryCode, "city" : linkInfo.fromAirportCity}))
-    $breakdown.find(".fromAirport .businessDemand").text(toLinkClassValueString(linkInfo.fromAirportBusinessDemand))
-    $breakdown.find(".fromAirport .touristDemand").text(toLinkClassValueString(linkInfo.fromAirportTouristDemand))
+    $breakdown.find(".fromAirport .businessDemand").text(toLinkClassValueStringWithSeats(linkInfo.fromAirportBusinessDemand))
+    $breakdown.find(".fromAirport .touristDemand").text(toLinkClassValueStringWithSeats(linkInfo.fromAirportTouristDemand))
 
     $breakdown.find(".toAirport .airportLabel").empty()
     $breakdown.find(".toAirport .airportLabel").append(getAirportSpan({ "iata" : linkInfo.toAirportCode, "countryCode" : linkInfo.toCountryCode, "city" : linkInfo.toAirportCity}))
-    $breakdown.find(".toAirport .businessDemand").text(toLinkClassValueString(linkInfo.toAirportBusinessDemand))
-    $breakdown.find(".toAirport .touristDemand").text(toLinkClassValueString(linkInfo.toAirportTouristDemand))
+    $breakdown.find(".toAirport .businessDemand").text(toLinkClassValueStringWithSeats(linkInfo.toAirportBusinessDemand))
+    $breakdown.find(".toAirport .touristDemand").text(toLinkClassValueStringWithSeats(linkInfo.toAirportTouristDemand))
 
 	 //+ " (business: " + linkInfo.businessPassengers + " tourist: " + linkInfo.touristPassengers + ")")
 	//$('#planLinkAirportLinkCapacity').text(linkInfo.airportLinkCapacity)
@@ -1024,7 +1024,7 @@ function updatePlanLinkInfo(linkInfo, isRefresh) {
 		//selectLinkFromMap(linkInfo.existingLink.id, true)
 		highlightLink(linkInfo.existingLink.id, false)
 	}
-
+	
     $('#planLinkDetails .titleCue').removeClass('glow')
 	if (linkInfo.rejection) {
 		$('.linkRejection #linkRejectionReason').text(linkInfo.rejection.description)
@@ -1091,7 +1091,6 @@ function updatePlanLinkInfo(linkInfo, isRefresh) {
             $("#planLinkDetails .warningList").append("<div class='warning'><img src='assets/images/icons/exclamation-red-frame.png'>&nbsp;" + warning + "</div>")
         })
     }
-
 	
 	//populate airplane model drop down
 	var explicitlySelectedModelId = $("#planLinkModelSelect").data('explicitId')
@@ -1494,9 +1493,9 @@ function updateTotalValues() {
 
     $(".frequencyDetailTotal .total").text(futureFrequency)
 
-    $('#planLinkCapacity').text(toLinkClassValueString(currentCapacity))
+    $('#planLinkCapacity').text(toLinkClassValueStringWithSeats(currentCapacity))
     if (planCapacity.future) {
-        $("#planLinkDetails .future .capacity").text(toLinkClassValueString(futureCapacity))
+        $("#planLinkDetails .future .capacity").text(toLinkClassValueStringWithSeats(futureCapacity))
         $("#planLinkDetails .future").show()
     } else {
         $("#planLinkDetails .future").hide()
@@ -2584,10 +2583,10 @@ function linkConfirmation() {
 			}
 		}
 
-		var existingCapacity = $('<span>' + toLinkClassValueString(existingLink.capacity) + '</span>')
+		var existingCapacity = $('<span>' + toLinkClassValueStringWithSeats(existingLink.capacity) + '</span>')
 		$("#linkConfirmationModal div.existing.capacity").append(existingCapacity)
 		if (existingLink.future) {
-		    var futureCapacity = $('<div class="future">(' + toLinkClassValueString(existingLink.future.capacity) + ')</div>')
+		    var futureCapacity = $('<div class="future">(' + toLinkClassValueStringWithSeats(existingLink.future.capacity) + ')</div>')
 		    $("#linkConfirmationModal div.existing.capacity").append(futureCapacity)
 		}
 
