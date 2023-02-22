@@ -714,9 +714,14 @@ function addMarkers(airports) {
 	markers = resultMarkers
 }
 
+function planFromAirportFromInfoWindow() {
+	closeAirportInfoPopup();
+	planFromAirport($('#airportPopupId').val())
+}
+
 function planToAirportFromInfoWindow() {
 	closeAirportInfoPopup();
-	planToAirport($('#airportPopupId').val(), $('#airportPopupName').text())
+	planToAirport($('#airportPopupId').val())
 }
 
 function removeMarkers() {

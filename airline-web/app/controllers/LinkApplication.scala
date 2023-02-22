@@ -628,7 +628,7 @@ class LinkApplication @Inject()(cc: ControllerComponents) extends AbstractContro
       case Some(fromAirport) =>
         AirportCache.getAirport(toAirportId, true) match {
           case Some(toAirport) =>
-            if (airline.getBases().map(_.airport.id).contains(fromAirportId)) { //make sure it has a base for the from Airport
+            if (true /*airline.getBases().map(_.airport.id).contains(fromAirportId)*/) { //make sure it has a base for the from Airport, disabled this for new link planning feature, it still gives an error error later if you actually try  to create a link, so it's fine
               Right((fromAirport, toAirport))
             } else {
               Left(s"from Airport $fromAirportId is not a base of ${airline.name}")
@@ -856,10 +856,10 @@ class LinkApplication @Inject()(cc: ControllerComponents) extends AbstractContro
         }
 
         //validate from airport is a base
-        val base = fromAirport.getAirlineBase(airline.id) match {
+        /*val base = fromAirport.getAirlineBase(airline.id) match {
           case None => return Some(("Cannot fly from this airport, this is not a base!", NO_BASE))
-          case Some(base) => base
-        }
+          case Some(base) =>  base
+        }*/
 
 
         val flightCategory = FlightType.getCategory(Computation.getFlightType(fromAirport, toAirport))

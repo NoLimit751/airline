@@ -3567,10 +3567,11 @@
 			</div>
 		</div>
 		<div style="width: 100%;">
-			<div class="button" id="planToAirportButton" onclick="planToAirportFromInfoWindow()">Plan Flight</div>
-			<div class="button" id="viewAirportButton" data-link="airport" onclick="showAirportDetails($('#airportPopupId').val())">View Airport</div>
-			<div class="button" id="toggleAirportLinksButton" onclick="toggleAirportLinksView()">Flight Map</div>
-			<div class="button" id="toggleDeparturesButton" data-link="departure" onclick="showDeparturesCanvas()">Departures</div>
+			<div class="button" style="width:33%; text-align: center;" id="planFromAirportButton" onclick="planFromAirportFromInfoWindow()">Plan flight from</div>
+			<div class="button" style="width:33%; text-align: center;" id="planToAirportButton" onclick="planToAirportFromInfoWindow()">Plan flight to</div>
+			<div class="button" style="width:33%; text-align: center;" id="viewAirportButton" data-link="airport" onclick="showAirportDetails($('#airportPopupId').val())">View Airport</div>
+			<div class="button" style="width:33%; text-align: center;" id="toggleAirportLinksButton" onclick="toggleAirportLinksView()">Flight Map</div>
+			<div class="button" style="width:33%; text-align: center;" id="toggleDeparturesButton" data-link="departure" onclick="showDeparturesCanvas()">Departures</div>
 		</div>
     </div>
     <div id="appealBonusDetailsTooltip" class="customTooltip" style="display: none; position: fixed;">

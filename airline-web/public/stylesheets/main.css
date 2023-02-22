@@ -488,6 +488,7 @@ div.selectedSection {
 	overflow: hidden !important;
 	line-height: 1.35;
 	white-space: nowrap;
+    max-width: 300px !important;;
 }
 
 dd.info {

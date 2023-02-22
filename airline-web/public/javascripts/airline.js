@@ -853,14 +853,15 @@ function fadeOutMarker(marker, animationInterval) {
     }, animationInterval)
 }
 
+function planFromAirport(fromAirportId) {
+	$('#planLinkFromAirportId').val(fromAirportId)
+}
 
-function planToAirport(toAirportId, toAirportName) {
+function planToAirport(toAirportId) {
 	$('#planLinkToAirportId').val(toAirportId)
-	//$('#planLinkToAirportName').text(toAirportName)
 	
 	if (!$('#planLinkFromAirportId').val()) { //set the HQ by default for now
 		$('#planLinkFromAirportId').val(activeAirline.headquarterAirport.airportId)
-		//$('#planLinkFromAirportName').text(activeAirline.headquarterAirport.airportName)
 	}
 	if ($('#planLinkFromAirportId').val() && $('#planLinkToAirportId').val()) {
 		planLink($('#planLinkFromAirportId').val(), $('#planLinkToAirportId').val())
